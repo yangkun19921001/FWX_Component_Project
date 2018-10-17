@@ -69,6 +69,7 @@ dependencies {
     api rootProject.ext.dependencies["multidex"]
     //屏幕适配
     api rootProject.ext.dependencies["autosize"]
-
-
+    //单 Activity + 多 Fragment 框架
+    api rootProject.ext.dependencies["fragmentation-core"]
+    api rootProject.ext.dependencies["fragmentation-swipeback"]
 }

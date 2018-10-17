@@ -23,6 +23,7 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
+import com.blankj.ALog;
 import com.blankj.utilcode.util.Utils;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.ClientModule;
@@ -41,6 +42,8 @@ import java.util.List;
 import butterknife.ButterKnife;
 import me.jessyan.autosize.AutoSizeConfig;
 import me.jessyan.retrofiturlmanager.RetrofitUrlManager;
+import me.yokeyword.fragmentation.Fragmentation;
+import me.yokeyword.fragmentation.helper.ExceptionHandler;
 import okhttp3.OkHttpClient;
 import timber.log.Timber;
 
@@ -56,6 +59,8 @@ import timber.log.Timber;
  * ================================================
  */
 public class GlobalConfiguration implements ConfigModule {
+
+    private String TAG = this.getClass().getSimpleName();
 
     @Override
     public void applyOptions(Context context, GlobalConfigModule.Builder builder) {
@@ -83,6 +88,7 @@ public class GlobalConfiguration implements ConfigModule {
                     rxCacheBuilder.useExpiredDataIfLoaderNotAvailable(true);
                     return null;
                 });
+
     }
 
     @Override
@@ -112,6 +118,24 @@ public class GlobalConfiguration implements ConfigModule {
                 CrashHandler.getInstance().init(application);
                 //初始化一些配置信息
                 InitializeService.start(application);
+                //单 Activity + 多 Fragment 配置
+                Fragmentation.builder()
+                        // 设置 栈视图 模式为 （默认）悬浮球模式   SHAKE: 摇一摇唤出  NONE：隐藏， 仅在Debug环境生效
+                        .stackViewMode(Fragmentation.BUBBLE)
+                        .debug(BuildConfig.DEBUG) // 实际场景建议.debug(BuildConfig.DEBUG)
+                        /**
+                         * 可以获取到{@link me.yokeyword.fragmentation.exception.AfterSaveStateTransactionWarning}
+                         * 在遇到After onSaveInstanceState时，不会抛出异常，会回调到下面的ExceptionHandler
+                         */
+                        .handleException(new ExceptionHandler() {
+                            @Override
+                            public void onException(Exception e) {
+                                // 以Bugtags为例子: 把捕获到的 Exception 传到 Bugtags 后台。
+                                // Bugtags.sendException(e);
+                                ALog.i(TAG, e.getMessage());
+                            }
+                        })
+                        .install();
 
                 /**
                  * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
@@ -170,8 +194,8 @@ public class GlobalConfiguration implements ConfigModule {
      */
 /*    private void customAdaptForExternal() {
         *//**
-         * {@link ExternalAdaptManager} 是一个管理外部三方库的适配信息和状态的管理类, 详细介绍请看 {@link ExternalAdaptManager} 的类注释
-         *//*
+     * {@link ExternalAdaptManager} 是一个管理外部三方库的适配信息和状态的管理类, 详细介绍请看 {@link ExternalAdaptManager} 的类注释
+     *//*
         AutoSizeConfig.getInstance().getExternalAdaptManager()
 
                 //加入的 Activity 将会放弃屏幕适配, 一般用于三方库的 Activity, 详情请看方法注释

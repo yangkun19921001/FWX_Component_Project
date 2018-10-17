@@ -5,7 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/CommonRes/CommonRes.iml" filepath="$PROJECT_DIR$/CommonRes/CommonRes.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonSDK/CommonSDK.iml" filepath="$PROJECT_DIR$/CommonSDK/CommonSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonService/CommonService.iml" filepath="$PROJECT_DIR$/CommonService/CommonService.iml" />
-      <module fileurl="file://$PROJECT_DIR$/Component_Project.iml" filepath="$PROJECT_DIR$/Component_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/FWX_Component_Project.iml" filepath="$PROJECT_DIR$/FWX_Component_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-gank/module-gank.iml" filepath="$PROJECT_DIR$/module-gank/module-gank.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-gold/module-gold.iml" filepath="$PROJECT_DIR$/module-gold/module-gold.iml" />
