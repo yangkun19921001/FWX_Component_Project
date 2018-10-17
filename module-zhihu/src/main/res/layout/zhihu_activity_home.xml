@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    >
+
+    <include layout="@layout/public_include_title"/>
+
+    <com.yk.component.res.status_view.MultipleStatusView
+        android:id="@+id/multiple_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:Public_emptyView="@layout/custom_empty_view"
+        app:Public_errorView="@layout/custom_error_view"
+        app:Public_loadingView="@layout/custom_loading_view"
+        app:Public_noNetworkView="@layout/custom_no_network_view" >
+
+        <android.support.v4.widget.SwipeRefreshLayout
+            android:id="@+id/swipeRefreshLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recyclerView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scrollbars="vertical"
+                tools:listitem="@layout/zhihu_recycle_list"
+                />
+
+        </android.support.v4.widget.SwipeRefreshLayout>
+    </com.yk.component.res.status_view.MultipleStatusView>
+
+
+
+
+</LinearLayout>

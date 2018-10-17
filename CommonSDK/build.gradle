@@ -1,0 +1,74 @@
+apply plugin: 'com.android.library'
+
+android {
+    compileSdkVersion rootProject.ext.android["compileSdkVersion"]
+    buildToolsVersion rootProject.ext.android["buildToolsVersion"]
+
+    compileOptions {
+        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility JavaVersion.VERSION_1_8
+    }
+
+    defaultConfig {
+        minSdkVersion rootProject.ext.android["minSdkVersion"]
+        targetSdkVersion rootProject.ext.android["targetSdkVersion"]
+        versionCode rootProject.ext.android["versionCode"]
+        versionName rootProject.ext.android["versionName"]
+
+        testInstrumentationRunner rootProject.ext.dependencies["androidJUnitRunner"]
+
+        multiDexEnabled true
+    }
+
+    buildTypes {
+        debug {
+            buildConfigField "boolean", "LOG_DEBUG", "true"
+            buildConfigField "boolean", "USE_CANARY", "true"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        release {
+            buildConfigField "boolean", "LOG_DEBUG", "false"
+            buildConfigField "boolean", "USE_CANARY", "false"
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    api fileTree(dir: 'libs', include: ['*.jar'])
+    api 'me.jessyan:arms:2.4.1'
+    //tools
+    api(rootProject.ext.dependencies["arouter"]) {
+        exclude module: 'support-v4'
+        exclude module: 'support-annotations'
+    }
+    api rootProject.ext.dependencies["retrofit-url-manager"]
+
+    //腾讯 UI 组件
+    api rootProject.ext.dependencies["qmui"]
+    //郭霖 移动端数据库
+    api rootProject.ext.dependencies["litepal"]
+    //万能适配器
+    api rootProject.ext.dependencies["adapter"]
+    //知乎图片选择组件
+    api rootProject.ext.dependencies["matisse"]
+    //刷新组件
+    api rootProject.ext.dependencies["SmartRefreshLayout"]
+    //日志写入文件
+    api rootProject.ext.dependencies["androidlog"]
+    //上传下载
+    api rootProject.ext.dependencies["UploadDownload"]
+    api rootProject.ext.dependencies["UploadService"]
+    //组件通信
+    api rootProject.ext.dependencies["androideventbus"]
+    //工具类
+    api rootProject.ext.dependencies["androidutils"]
+    //dex突破65535的限制
+    api rootProject.ext.dependencies["multidex"]
+    //屏幕适配
+    api rootProject.ext.dependencies["autosize"]
+
+
+}

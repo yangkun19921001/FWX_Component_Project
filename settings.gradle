@@ -1,0 +1,7 @@
+include ':app',
+        ':CommonSDK',
+        ':CommonService',
+        ':CommonRes',
+        ':module-zhihu',
+        ':module-gank',
+        'module-gold'

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
+
+    <com.yk.component.res.status_view.MultipleStatusView
+        android:id="@+id/multiple_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:Public_contentView="@layout/layout_refresh_view"
+        app:Public_emptyView="@layout/custom_empty_view"
+        app:Public_errorView="@layout/custom_error_view"
+        app:Public_loadingView="@layout/custom_loading_view"
+        app:Public_noNetworkView="@layout/custom_no_network_view" />
+</FrameLayout>

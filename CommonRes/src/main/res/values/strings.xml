@@ -1,0 +1,14 @@
+<resources>
+    <string name="public_app_name">组件化框架</string>
+    <string name="public_module_name">app</string>
+    <string name="public_loading">加载中</string>
+    <string name="public_name_zhihu">知乎日报</string>
+    <string name="public_name_gank">干货集中营</string>
+    <string name="public_name_gold">稀土掘金</string>
+
+
+    <string name="public_empty_view_hint">暂无数据</string>
+    <string name="public_error_view_hint">加载失败</string>
+    <string name="public_no_network_view_hint">网络异常</string>
+    <string name="public_custom_loading_text">加载中...</string>
+</resources>
