@@ -1,0 +1,17 @@
+<resources>
+    <string name="login_app_name">login_component</string>
+    <string name="login_phone_number_login">手机号码登录</string>
+
+    <string name="login_User_name_cannot_be_empty">用户名不能为空！</string>
+    <string name="login_Password_cannot_be_empty">密码不能为空！</string>
+    <string name="login_User_Number_cannot_be_empty">电话号码不能为空！</string>
+
+    <string name="login_network_anomalies">网络异常，请检查网络！</string>
+    <string name="login_User_already_exists">用户已存在！</string>
+    <string name="login_registration_failed_without_permission">注册失败，无权限！</string>
+    <string name="login_Registration_failed">注册失败</string>
+    <string name="login_illegal_user_name">用户名不合法</string>
+    <string name="login_register_exceed_service_limit">您的App用户注册数量已达上限,请升级至企业版</string>
+    <string name="login_register_succeed">注册成功</string>
+    <string name="login_check_user_info">检查手机号码或者密码是否正确?</string>
+</resources>

@@ -18,13 +18,16 @@ package com.yk.component.sdk.core;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.ALog;
+import com.blankj.utilcode.util.FileUtils;
 import com.blankj.utilcode.util.Utils;
+import com.hyphenate.easeui.helper.HXHelper;
 import com.jess.arms.base.delegate.AppLifecycles;
 import com.jess.arms.di.module.ClientModule;
 import com.jess.arms.di.module.GlobalConfigModule;
@@ -98,6 +101,7 @@ public class GlobalConfiguration implements ConfigModule {
 
             @Override
             public void attachBaseContext(@NonNull Context base) {
+                initLog(base);
             }
 
             @Override
@@ -137,6 +141,10 @@ public class GlobalConfiguration implements ConfigModule {
                         })
                         .install();
 
+                //初始化短信验证功能
+//                MobSDK.init(application);
+                //初始化环信
+                initHXDemo(application);
                 /**
                  * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
                  * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
@@ -183,6 +191,8 @@ public class GlobalConfiguration implements ConfigModule {
                 // 在 Activity 中绑定少量的 Fragment 建议这样做,如果需要绑定较多的 Fragment 不建议设置此参数,如 ViewPager 需要展示较多 Fragment
                 f.setRetainInstance(true);
             }
+
+
         });
     }
 
@@ -213,4 +223,37 @@ public class GlobalConfiguration implements ConfigModule {
                 //经过测试 DefaultErrorActivity 的设计图宽度在 380dp - 400dp 显示效果都是比较舒服的
                 .addExternalAdaptInfoOfActivity(DefaultErrorActivity.class, new ExternalAdaptInfo(true, 400));
     }*/
+
+
+    /**
+     * 初始化 Log
+     */
+    private void initLog(Context context) {
+        String logPath = Environment.getExternalStorageDirectory() + Constants.ILogPath.DefPath;
+        if (!FileUtils.isDir(logPath)) {
+            FileUtils.createOrExistsDir(logPath);
+
+        }
+        ALog.init(context)
+                .setLogSwitch(true)// 设置log总开关，包括输出到控制台和文件，默认开
+                .setConsoleSwitch(true)// 设置是否输出到控制台开关，默认开                .
+// setLogSwitch(BuildConfig.DEBUG)// 设置log总开关，包括输出到控制台和文件，默认开
+                .setConsoleSwitch(com.jess.arms.BuildConfig.DEBUG)// 设置是否输出到控制台开关，默认开
+                .setGlobalTag(null)// 设置log全局标签，默认为空
+                // 当全局标签不为空时，我们输出的log全部为该tag，
+                // 为空时，如果传入的tag为空那就显示类名，否则显示tag
+                .setLogHeadSwitch(true)// 设置log头信息开关，默认为开
+                .setLog2FileSwitch(true)// 打印log时是否存到文件的开关，默认关
+                .setDir(logPath)// 当自定义路径为空时，写入应用的/cache/log/目录中
+                .setFilePrefix(context.getString(com.jess.arms.R.string.app_name) + "----")// 当文件前缀为空时，默认为"alog"，即写入文件为"alog-MM-dd.txt"
+                .setBorderSwitch(true)// 输出日志是否带边框开关，默认开
+        ;// log栈深度，默认为1
+    }
+
+    /**
+     * 初始化环信
+     */
+    public void initHXDemo(Application applicationContext) {
+        HXHelper.getInstance().initSDK(applicationContext);
+    }
 }

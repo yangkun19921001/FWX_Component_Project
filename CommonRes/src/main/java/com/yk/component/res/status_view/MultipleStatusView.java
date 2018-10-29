@@ -75,7 +75,7 @@ public class MultipleStatusView extends RelativeLayout {
 
     @Override protected void onFinishInflate() {
         super.onFinishInflate();
-        showContent();
+        showLoading();
     }
 
     @Override protected void onDetachedFromWindow() {

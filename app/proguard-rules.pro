@@ -244,3 +244,7 @@
 ####################今日头条屏幕适配#######################
  -keep class me.jessyan.autosize.** { *; }
  -keep interface me.jessyan.autosize.** { *; }
+
+ #######################环信######################################
+ -keep class com.hyphenate.** {*;}
+ -dontwarn  com.hyphenate.**

@@ -1,6 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:orientation="vertical">
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:id="@+id/splash_root"
+    android:layout_height="match_parent">
+
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scaleType="fitXY"
+        android:src="@drawable/splash" />
+
+
+    <RelativeLayout
+        android:id="@+id/rl_bottom"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginBottom="@dimen/public_x_30"
+        android:padding="@dimen/public_x_20">
+
+        <Button
+            android:id="@+id/btn_login"
+            android:layout_width="@dimen/public_x_110"
+            android:layout_height="@dimen/public_x_45"
+            android:background="@drawable/btn_login_selector"
+            android:clickable="true"
+            android:text="@string/login"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/sp_14" />
+
+        <Button
+            android:id="@+id/btn_register"
+            android:layout_width="@dimen/public_x_110"
+            android:layout_height="@dimen/public_x_45"
+            android:layout_alignParentRight="true"
+            android:background="@drawable/btn_register_selector"
+            android:clickable="true"
+            android:text="@string/register"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/sp_14" />
+
+    </RelativeLayout>
+    <FrameLayout
+        android:id="@+id/fl_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></FrameLayout>
+
+</FrameLayout>

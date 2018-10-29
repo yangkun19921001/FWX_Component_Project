@@ -1,5 +1,5 @@
 apply plugin: 'com.android.library'
-
+//apply plugin: 'com.mob.sdk'
 android {
     compileSdkVersion rootProject.ext.android["compileSdkVersion"]
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
@@ -34,10 +34,18 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+
+    useLibrary 'org.apache.http.legacy'
+
+//    MobSDK {
+//        appKey "285cbccc703c8"
+//        appSecret "d1d0816cba65ec290f1f9d3d2b039196"
+//        SMSSDK {}
+//    }
 }
 
 dependencies {
-    api fileTree(dir: 'libs', include: ['*.jar'])
+    api fileTree(include: ['*.jar'], dir: 'libs')
     api 'me.jessyan:arms:2.4.1'
     //tools
     api(rootProject.ext.dependencies["arouter"]) {
@@ -45,7 +53,6 @@ dependencies {
         exclude module: 'support-annotations'
     }
     api rootProject.ext.dependencies["retrofit-url-manager"]
-
     //腾讯 UI 组件
     api rootProject.ext.dependencies["qmui"]
     //郭霖 移动端数据库
@@ -72,4 +79,11 @@ dependencies {
     //单 Activity + 多 Fragment 框架
     api rootProject.ext.dependencies["fragmentation-core"]
     api rootProject.ext.dependencies["fragmentation-swipeback"]
+    //环信包
+    //Optional compile for GCM (Google Cloud Messaging).
+    //    api rootProject.ext.dependencies ["play-services-gcm"]
+    //    api rootProject.ext.dependencies ["hyphenate-sdk"]
+    api project(':ThirdLibrarys:huanxi_component')
+    //popup
+    api rootProject.ext.dependencies["EasyPopup"]
 }

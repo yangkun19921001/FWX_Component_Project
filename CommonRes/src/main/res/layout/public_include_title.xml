@@ -20,10 +20,27 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="@dimen/public_mar_left_30px"
-            android:layout_marginRight="@dimen/public_mar_right_30px"
+            android:layout_marginLeft="@dimen/public_x_10"
+            android:layout_marginRight="@dimen/public_x_10"
             android:layout_centerVertical="true"
             android:src="@drawable/public_ic_arrow_back_white_24dp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/public_toolbar_more"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="right">
+
+        <ImageView
+            android:id="@+id/public_iv_more"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/public_x_10"
+            android:layout_marginRight="@dimen/public_x_10"
+            android:src="@drawable/ic_add_black_24dp" />
 
     </RelativeLayout>
 
@@ -31,9 +48,10 @@
         android:id="@+id/public_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/public_font_18sp"
+        android:textSize="@dimen/public_font_16sp"
         android:textColor="@color/public_white"
         android:layout_gravity="center"
+        android:textStyle="bold"
         tools:text="@string/public_app_name"/>
 
 

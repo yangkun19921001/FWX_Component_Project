@@ -1,5 +1,5 @@
 <resources>
-    <string name="public_app_name">组件化框架</string>
+    <string name="public_app_name">尬聊</string>
     <string name="public_module_name">app</string>
     <string name="public_loading">加载中</string>
     <string name="public_name_zhihu">知乎日报</string>
@@ -11,4 +11,8 @@
     <string name="public_error_view_hint">加载失败</string>
     <string name="public_no_network_view_hint">网络异常</string>
     <string name="public_custom_loading_text">加载中...</string>
+    <string name="public_weichat_button_title">微信</string>
+    <string name="public_contacts_button_title">通讯录</string>
+    <string name="public_find_button_title">发现</string>
+    <string name="public_me_button_title">我</string>
 </resources>

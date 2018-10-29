@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"
+        android:background="@color/gray5"></View>
+
+    <com.yk.component.res.tab.AlphaTabsIndicator
+        android:id="@+id/alphaIndicator"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_45"
+        android:orientation="horizontal">
+
+        <com.yk.component.res.tab.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/public_x_5"
+            app:tabIconNormal="@mipmap/home_normal"
+            app:tabIconSelected="@mipmap/home_selected"
+            app:tabText="@string/public_weichat_button_title"
+            app:tabTextSize="@dimen/public_font_10sp"
+            app:textColorNormal="#999999"
+            app:textColorSelected="#46c01b" />
+
+        <com.yk.component.res.tab.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/public_x_5"
+            app:tabIconNormal="@mipmap/category_normal"
+            app:tabIconSelected="@mipmap/category_selected"
+            app:tabText="@string/public_contacts_button_title"
+            app:tabTextSize="@dimen/public_font_10sp"
+            app:textColorNormal="#999999"
+            app:textColorSelected="#46c01b" />
+
+        <com.yk.component.res.tab.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/public_x_5"
+            app:tabIconNormal="@mipmap/service_normal"
+            app:tabIconSelected="@mipmap/service_selected"
+            app:tabText="@string/public_find_button_title"
+            app:tabTextSize="@dimen/public_font_10sp"
+            app:textColorNormal="#999999"
+            app:textColorSelected="#46c01b" />
+
+
+        <com.yk.component.res.tab.AlphaTabView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:padding="@dimen/public_x_5"
+            app:tabIconNormal="@mipmap/mine_normal"
+            app:tabIconSelected="@mipmap/mine_selected"
+            app:tabText="@string/public_me_button_title"
+            app:tabTextSize="@dimen/public_font_10sp"
+            app:textColorNormal="#999999"
+            app:textColorSelected="#46c01b" />
+    </com.yk.component.res.tab.AlphaTabsIndicator>
+</LinearLayout>

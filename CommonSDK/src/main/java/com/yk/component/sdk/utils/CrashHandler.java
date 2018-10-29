@@ -26,6 +26,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.yk.component.sdk.core.Constants.ILogPath.Log_Crash_Path;
+
 /**
  * UncaughtException处理类,当程序发生Uncaught异常的时候,有该类来接管程序,并记录发送错误报告.
  *
@@ -48,7 +50,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
     // 日志地址
-    private String logPath = "T01/组件化框架";
+    private String logPath =Log_Crash_Path;
     private String dir;
 
     /**

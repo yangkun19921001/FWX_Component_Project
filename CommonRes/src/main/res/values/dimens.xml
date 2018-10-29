@@ -4,12 +4,14 @@
     <dimen name="public_activity_vertical_margin">16dp</dimen>
     //字体
     <dimen name="public_font_11sp">11sp</dimen>
+    <dimen name="public_font_10sp">10sp</dimen>
     <dimen name="public_font_12sp">12sp</dimen>
     <dimen name="public_font_13sp">13sp</dimen>
     <dimen name="public_font_14sp">14sp</dimen>
     <dimen name="public_font_16sp">16sp</dimen>
     <dimen name="public_font_18sp">18sp</dimen>
     <dimen name="public_font_20sp">20sp</dimen>
+    <dimen name="public_font_22sp">22sp</dimen>
     <dimen name="public_font_24sp">24sp</dimen>
     <dimen name="public_font_30sp">30sp</dimen>
     <dimen name="public_font_32sp">32sp</dimen>

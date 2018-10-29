@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.it.yk.login_component.widget.RegisterView
+        android:id="@+id/register"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.it.yk.login_component.widget.RegisterView>
+
+    <com.it.yk.login_component.widget.LoginView
+        android:id="@+id/login"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+    </com.it.yk.login_component.widget.LoginView>
+
+</FrameLayout>

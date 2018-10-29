@@ -6,10 +6,17 @@
       <module fileurl="file://$PROJECT_DIR$/CommonSDK/CommonSDK.iml" filepath="$PROJECT_DIR$/CommonSDK/CommonSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonService/CommonService.iml" filepath="$PROJECT_DIR$/CommonService/CommonService.iml" />
       <module fileurl="file://$PROJECT_DIR$/FWX_Component_Project.iml" filepath="$PROJECT_DIR$/FWX_Component_Project.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/ThirdLibrarys.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/ThirdLibrarys.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/contacts_component/contacts_component.iml" filepath="$PROJECT_DIR$/contacts_component/contacts_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/find_component/find_component.iml" filepath="$PROJECT_DIR$/find_component/find_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/huanxi_component/huanxi_component.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/huanxi_component/huanxi_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/login_component/login_component.iml" filepath="$PROJECT_DIR$/login_component/login_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/me_component/me_component.iml" filepath="$PROJECT_DIR$/me_component/me_component.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-gank/module-gank.iml" filepath="$PROJECT_DIR$/module-gank/module-gank.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-gold/module-gold.iml" filepath="$PROJECT_DIR$/module-gold/module-gold.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-zhihu/module-zhihu.iml" filepath="$PROJECT_DIR$/module-zhihu/module-zhihu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/weichat_component/weichat_component.iml" filepath="$PROJECT_DIR$/weichat_component/weichat_component.iml" />
     </modules>
   </component>
 </project>

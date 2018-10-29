@@ -6,7 +6,7 @@ ext {
             minSdkVersion    : 16,
             targetSdkVersion : 27,
             versionCode      : 1,
-            versionName      : "1.0.0"
+            versionName      : "1.0.0.1"
     ]
 
     version = [
@@ -116,18 +116,25 @@ ext {
             "SmartRefreshHeader"       : "com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7",//刷新
             //Utils----- 参考这位大神写的 https://github.com/Blankj
             "androidutils"             : "com.blankj:utilcode:1.18.0",
+            "EasyPopup"             : "com.github.zyyoona7:EasyPopup:1.1.2", //Popup
 
             //上传下载
             "UploadDownload"           : "com.lzy.net:okgo:3.0.4",
             "UploadService"            : "com.lzy.net:okserver:2.0.5",
 
             //屏幕适配
-            "autosize"                 : "me.jessyan:autosize:0.7.0",
+            "autosize"                 : "me.jessyan:autosize:1.0.0",
 
             //单Activity 多 Fragment 框架 + 滑动返回
 //            "fragmentation"            :  'me.yokeyword:fragmentation:1.3.6',
             "fragmentation-core"       : 'me.yokeyword:fragmentation-core:1.3.6',
             "fragmentation-swipeback"  : 'me.yokeyword:fragmentation-swipeback:1.3.6',
+
+            //环信包
+//            "play-services-gcm"         :'com.google.android.gms:play-services-gcm:9.4.0',
+//            "hyphenate-sdk"             :'com.hyphenate:hyphenate-sdk:3.5.1'
+
+
     ]
 
 

@@ -10,9 +10,7 @@ import android.support.annotation.Nullable;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.blankj.ALog;
 import com.blankj.utilcode.util.ResourceUtils;
-import com.jess.arms.BuildConfig;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.cache.CacheEntity;
 import com.lzy.okgo.cache.CacheMode;
@@ -80,7 +78,7 @@ public class InitializeService extends IntentService {
 
         initLitePal();
 
-        initLog();
+//        initLog();
 
         initOKGOHttp();
 
@@ -107,20 +105,6 @@ public class InitializeService extends IntentService {
      * 初始化 Log
      */
     private void initLog() {
-        ALog.init(this)
-                .setLogSwitch(true)// 设置log总开关，包括输出到控制台和文件，默认开
-                .setConsoleSwitch(true)// 设置是否输出到控制台开关，默认开                .
-// setLogSwitch(BuildConfig.DEBUG)// 设置log总开关，包括输出到控制台和文件，默认开
-                .setConsoleSwitch(BuildConfig.DEBUG)// 设置是否输出到控制台开关，默认开
-                .setGlobalTag(null)// 设置log全局标签，默认为空
-                // 当全局标签不为空时，我们输出的log全部为该tag，
-                // 为空时，如果传入的tag为空那就显示类名，否则显示tag
-                .setLogHeadSwitch(true)// 设置log头信息开关，默认为开
-                .setLog2FileSwitch(true)// 打印log时是否存到文件的开关，默认关
-                .setDir("")// 当自定义路径为空时，写入应用的/cache/log/目录中
-                .setFilePrefix(context.getString(com.jess.arms.R.string.app_name) + "----")// 当文件前缀为空时，默认为"alog"，即写入文件为"alog-MM-dd.txt"
-                .setBorderSwitch(true)// 输出日志是否带边框开关，默认开
-                ;// log栈深度，默认为1
     }
 
     /**

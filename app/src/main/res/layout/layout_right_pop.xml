@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <View
+        android:id="@+id/v_arrow"
+        android:layout_width="@dimen/public_x_20"
+        android:layout_height="@dimen/public_x_10"
+        android:layout_gravity="end"
+        android:layout_marginEnd="@dimen/public_x_10"
+        android:layout_marginRight="@dimen/public_x_10" />
+
+    <LinearLayout
+        android:layout_width="@dimen/public_x_120"
+        android:layout_height="wrap_content"
+        android:background="@color/black_dft"
+        android:divider="@drawable/divider_horizontal_bg"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:showDividers="middle">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_x_30"
+            android:gravity="center"
+            android:text="发起群聊"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/public_font_12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_x_30"
+            android:gravity="center"
+            android:text="添加朋友"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/public_font_12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_x_30"
+            android:gravity="center"
+            android:text="扫一扫"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/public_font_12sp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/public_x_30"
+            android:gravity="center"
+            android:text="收付款"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/public_font_12sp" />
+
+    </LinearLayout>
+</LinearLayout>

@@ -1,7 +1,13 @@
-include ':app',
+include ':app',                                                    //app 宿主
+        ':weichat_component',
+        ':contacts_component',
+        ':find_component',
+        ':me_component',
+        ':login_component',
         ':CommonSDK',
         ':CommonService',
         ':CommonRes',
         ':module-zhihu',
         ':module-gank',
+        ':ThirdLibrarys:huanxi_component',
         'module-gold'

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_finsh"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginTop="@dimen/public_x_40"
+        android:src="@drawable/ic_clear_black_24dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/public_x_50"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginTop="@dimen/public_x_50"
+        android:text="手机号码注册"
+        android:textColor="@color/black_dft"
+        android:textSize="@dimen/public_font_22sp" />
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginRight="@dimen/public_x_20">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="昵称"
+            android:textSize="@dimen/public_font_14sp" />
+
+        <EditText
+            android:id="@+id/et_input_name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:hint="例如: 陈晨"
+            android:maxLines="1"
+            android:textColor="@color/black_dft"
+            android:textSize="@dimen/public_font_14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"
+        android:layout_marginLeft="@dimen/public_x_18"
+        android:layout_marginRight="@dimen/public_x_18"
+        android:layout_marginTop="@dimen/public_x_15"
+        android:background="@color/gray5"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginRight="@dimen/public_x_20"
+        android:layout_marginTop="@dimen/public_x_15">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="国家/地区"
+            android:textSize="@dimen/public_font_14sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:text="中国 （+ 86 ）"
+            android:textColor="@color/green1"
+            android:textSize="@dimen/public_font_14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"
+        android:layout_marginLeft="@dimen/public_x_18"
+        android:layout_marginRight="@dimen/public_x_18"
+        android:layout_marginTop="@dimen/public_x_15"
+        android:background="@color/gray5"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginRight="@dimen/public_x_20"
+        android:layout_marginTop="@dimen/public_x_15">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="手机号"
+            android:textSize="@dimen/public_font_14sp" />
+
+        <EditText
+            android:id="@+id/et_input_phone_number"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:hint="请填写手机号码"
+            android:maxLines="1"
+            android:textColor="@color/black_dft"
+            android:textSize="@dimen/public_font_14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"
+        android:layout_marginLeft="@dimen/public_x_18"
+        android:layout_marginRight="@dimen/public_x_18"
+        android:layout_marginTop="@dimen/public_x_15"
+        android:background="@color/gray5"></View>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginRight="@dimen/public_x_20"
+        android:layout_marginTop="@dimen/public_x_15">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="密码"
+            android:textSize="@dimen/public_font_14sp" />
+
+        <EditText
+            android:maxLines="1"
+            android:id="@+id/et_input_password"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="3"
+            android:background="@null"
+            android:hint="填写密码"
+            android:textColor="@color/black_dft"
+            android:textSize="@dimen/public_font_14sp" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"
+        android:layout_marginLeft="@dimen/public_x_18"
+        android:layout_marginRight="@dimen/public_x_18"
+        android:layout_marginTop="@dimen/public_x_15"
+        android:background="@color/gray5"></View>
+
+
+    <Button
+        android:id="@+id/btn_register"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/public_x_20"
+        android:layout_marginRight="@dimen/public_x_20"
+        android:layout_marginTop="@dimen/public_x_20"
+        android:background="@drawable/btn_login_selector"
+        android:text="注册"
+        android:textColor="@android:color/white" />
+</LinearLayout>

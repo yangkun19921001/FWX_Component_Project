@@ -20,9 +20,9 @@ import android.app.Application;
 import android.os.Build;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import com.jess.arms.utils.ArmsUtils;
+import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
 
 import timber.log.Timber;
 
@@ -58,15 +58,18 @@ public class ActivityLifecycleCallbacksImpl implements Application.ActivityLifec
                     }
                 }
             }
-            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title") != null) {
+           /* if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title") != null) {
                 ((TextView) ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title")).setText(activity.getTitle());
-            }
+            }*/
             if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_back") != null) {
                 ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_back").setOnClickListener(v -> {
                     activity.onBackPressed();
                 });
             }
         }
+
+//        QMUIStatusBarHelper.translucent(activity);
+        QMUIStatusBarHelper.setStatusBarDarkMode(activity);
     }
 
     @Override
