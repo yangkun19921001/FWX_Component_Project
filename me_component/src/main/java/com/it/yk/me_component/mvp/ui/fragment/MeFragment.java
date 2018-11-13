@@ -1,5 +1,6 @@
 package com.it.yk.me_component.mvp.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -24,6 +25,8 @@ import static com.jess.arms.utils.Preconditions.checkNotNull;
 public class MeFragment extends BaseFragment<MePresenter> implements MeContract.View {
 
 
+    private View inflate;
+
     public static MeFragment newInstance() {
         MeFragment fragment = new MeFragment();
         return fragment;
@@ -41,12 +44,14 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContract.
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_me, container, false);
+        inflate = inflater.inflate(R.layout.fragment_me, container, false);
+        return inflate;
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+        //初始化视图对象
+        mPresenter.initView(inflate);
     }
 
     /**
@@ -96,5 +101,10 @@ public class MeFragment extends BaseFragment<MePresenter> implements MeContract.
 
     public String getTitle() {
         return "我";
+    }
+
+    @Override
+    public Context getContxt() {
+        return getActivity();
     }
 }

@@ -1,5 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
           package="com.yk.component.sdk">
+
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <application>
         <service android:name=".service.InitializeService"></service>
 

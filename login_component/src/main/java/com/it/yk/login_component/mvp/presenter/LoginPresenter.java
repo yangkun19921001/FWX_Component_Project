@@ -102,7 +102,7 @@ public class LoginPresenter extends BasePresenter<LoginContract.Model, LoginCont
         LoginView.addLoginCallBack(new LoginView.ILoginListener() {
             @Override
             public void onLoginSucceed() {
-                QMUITipDialogHelper.getInstance().showLoading(mAppManager.getCurrentActivity(), "登录成功!", Constants.ILoad.LoadSuccess, 1000, new QMUITipDialogHelper.ILoadListener() {
+                QMUITipDialogHelper.getInstance().showLoading(mAppManager.getCurrentActivity(), "登录成功!", Constants.ILoad.LoadSuccess, 0, new QMUITipDialogHelper.ILoadListener() {
                     @Override
                     public void loadSucceed() {
                         HXHelper.getInstance().getLoginEngine().loginSucceedInit();

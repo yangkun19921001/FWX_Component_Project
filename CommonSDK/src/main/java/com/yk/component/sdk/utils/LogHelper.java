@@ -12,20 +12,25 @@ import com.yk.component.sdk.core.Constants;
 
 public class LogHelper {
 
-    public static void i(String TAG, Object... objects) {
+    public static void i(String TAG, String objects) {
         logConfig(Constants.ILogPath.Log_I_Path);
         ALog.i(TAG, objects);
     }
 
-    public static void d(String TAG, Object... objects) {
-        logConfig(Constants.ILogPath.Log_D_Path);
-        ALog.d(TAG, objects);
+    public static void http(String TAG, String objects) {
+        logConfig(Constants.ILogPath.Log_HTTP_Path);
+        ALog.i(TAG, objects);
     }
 
-    public static void e(String TAG, Object... objects) {
-        logConfig(Constants.ILogPath.Log_E_Path);
-        ALog.e(TAG, objects);
+    public static void d(String TAG, String objects) {
+        logConfig(Constants.ILogPath.Log_D_Path);
+        ALog.i(TAG, objects);
     }
+    public static void e(String TAG, String objects) {
+        logConfig(Constants.ILogPath.Log_E_Path);
+        ALog.i(TAG, objects);
+    }
+
 
     private static void logConfig(String path) {
         String logPath = Environment.getExternalStorageDirectory() + path;

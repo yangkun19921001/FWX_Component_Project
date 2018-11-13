@@ -20,10 +20,9 @@ import com.yk.component.sdk.core.Constants;
 import io.reactivex.Observable;
 import io.reactivex.ObservableEmitter;
 import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
 import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
 import io.reactivex.schedulers.Schedulers;
+import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
 /**
  * Created by yangk on 2018/10/18.
@@ -134,12 +133,7 @@ public class LoginView extends RelativeLayout implements View.OnClickListener {
                 }
             }).subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe(new Observer<String>() {
-                        @Override
-                        public void onSubscribe(Disposable d) {
-
-                        }
-
+                    .subscribe(new ErrorHandleSubscriber<String>(ArmsUtils.obtainAppComponentFromContext(mContext).rxErrorHandler()) {
                         @Override
                         public void onNext(String meg) {
                             if (meg.equals(Constants.ILoad.LoadSuccess+"")) {
@@ -156,12 +150,8 @@ public class LoginView extends RelativeLayout implements View.OnClickListener {
                             if (iLoginListener != null)
                                 iLoginListener.onLoginError(e.getMessage().toString());
                         }
-
-                        @Override
-                        public void onComplete() {
-
-                        }
                     });
+
 
 
         } else {

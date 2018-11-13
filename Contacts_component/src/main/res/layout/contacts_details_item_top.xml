@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/public_x_70"
+    android:layout_marginBottom="@dimen/public_x_20"
+    android:layout_marginTop="@dimen/public_x_10"
+    android:background="@drawable/public_selector_btn_bg">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"
+        android:background="@color/gray5"></View>
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/public_x_50"
+        android:layout_height="@dimen/public_x_50"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:src="@drawable/ease_default_avatar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/black_dft"
+            android:textSize="@dimen/public_font_14sp" />
+
+        <TextView
+            android:id="@+id/tv_wx_number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/public_x_2"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/gray_dft"
+            android:textSize="@dimen/public_font_12sp" />
+
+        <TextView
+            android:id="@+id/tv_wx_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/public_x_1"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/gray_dft"
+            android:textSize="@dimen/public_font_12sp" />
+    </LinearLayout>
+
+</RelativeLayout>

@@ -24,14 +24,14 @@ import android.widget.Button;
 import com.alibaba.android.arouter.facade.annotation.Autowired;
 import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
-import com.blankj.ALog;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.jess.arms.utils.ArmsUtils;
 import com.lzy.okgo.callback.StringCallback;
 import com.lzy.okgo.model.Response;
-import com.yk.component.sdk.core.RouterHub;
 import com.yk.component.res.updata.AppDownloadManager;
+import com.yk.component.sdk.core.RouterHub;
+import com.yk.component.sdk.utils.LogHelper;
 import com.yk.component.sdk.utils.Utils;
 import com.yk.component.service.gank.service.GankInfoService;
 import com.yk.component.service.gold.service.GoldInfoService;
@@ -106,7 +106,7 @@ public class MainActivity extends BaseActivity {
             @Override
             public void onSuccess(Response<String> response) {
                 if (response.getRawResponse().body().toString() != null){
-                    ALog.i(TAG,response.getRawResponse().body().toString());
+                    LogHelper.i(TAG,"checkAppVerstion--"+response.getRawResponse().body().toString());
                     String[] appInfoJson = response.body().toString().split(",");
                     downloadManager.showUpdataNoty("","",appInfoJson[1]);
                 }

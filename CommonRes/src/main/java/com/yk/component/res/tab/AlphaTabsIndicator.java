@@ -8,8 +8,6 @@ import android.util.AttributeSet;
 import android.view.View;
 import android.widget.LinearLayout;
 
-import com.blankj.ALog;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,19 +38,15 @@ public class AlphaTabsIndicator extends LinearLayout {
 
     public AlphaTabsIndicator(Context context) {
         this(context, null);
-        ALog.d("");
     }
 
     public AlphaTabsIndicator(Context context, AttributeSet attrs) {
         this(context, attrs, 0);
-        ALog.d("");
-        ALog.d("");
 
     }
 
     public AlphaTabsIndicator(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
-        ALog.d("");
         post(new Runnable() {
             @Override
             public void run() {

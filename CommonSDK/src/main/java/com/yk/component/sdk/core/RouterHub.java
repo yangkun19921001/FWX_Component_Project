@@ -61,7 +61,6 @@ public interface RouterHub {
     String APP_SPLASHACTIVITY = APP + "/SplashActivity";
 
 
-
     /**
      * 知乎分组
      */
@@ -95,4 +94,16 @@ public interface RouterHub {
      * 主页面
      */
     String APP_MAINACTIVITY = APP + "/MainActivity";
+
+    String FRIENDS = "/Friends";
+    String CHAT_COMPONENT = "/CHAT_COMPONENT";
+    /**
+     * 添加朋友页面
+     */
+    String FRIENDS_AddFriendsActivity = FRIENDS + "/AddFriendsActivity";
+    String FRIENDS_NewFriendsActivity = FRIENDS + "/NewFriendsActivity";
+    String FRIENDS_ContactsDetailsActivity = FRIENDS + "/ContactsDetailsActivity";
+
+    String FRIENDS_PhoneContactsActivity = FRIENDS + "/PhoneContactsActivity";
+    String Chat_ChatComponentActivity =CHAT_COMPONENT + "/ChatComponentActivity" ;
 }

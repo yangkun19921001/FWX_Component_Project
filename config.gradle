@@ -3,8 +3,8 @@ ext {
     android = [
             compileSdkVersion: 27,
             buildToolsVersion: "27.0.3",
-            minSdkVersion    : 16,
-            targetSdkVersion : 27,
+            minSdkVersion    : 17,
+            targetSdkVersion : 22,
             versionCode      : 1,
             versionName      : "1.0.0.1"
     ]
@@ -109,14 +109,14 @@ ext {
 
             "qmui"                     : "com.qmuiteam:qmui:1.0.6",//腾讯 UI 工具
             "androidlog"               : "com.blankj:alog:1.8.0",
-            "litepal"                  : "org.litepal.android:core:1.6.1",//database
+            "litepal"                  : "org.litepal.android:java:3.0.0",//database
             "adapter"                  : "com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30",//万能适配器
             "matisse"                  : "com.zhihu.android:matisse:0.4.3",//图片选择器
             "SmartRefreshLayout"       : "com.scwang.smartrefresh:SmartRefreshLayout:1.0.4-7",//刷新
             "SmartRefreshHeader"       : "com.scwang.smartrefresh:SmartRefreshHeader:1.0.4-7",//刷新
             //Utils----- 参考这位大神写的 https://github.com/Blankj
             "androidutils"             : "com.blankj:utilcode:1.18.0",
-            "EasyPopup"             : "com.github.zyyoona7:EasyPopup:1.1.2", //Popup
+            "EasyPopup"                : "com.github.zyyoona7:EasyPopup:1.1.2", //Popup
 
             //上传下载
             "UploadDownload"           : "com.lzy.net:okgo:3.0.4",
@@ -133,6 +133,9 @@ ext {
             //环信包
 //            "play-services-gcm"         :'com.google.android.gms:play-services-gcm:9.4.0',
 //            "hyphenate-sdk"             :'com.hyphenate:hyphenate-sdk:3.5.1'
+
+            //高斯模糊
+            "blur"                     : 'com.dasu.image:blur:0.0.6',
 
 
     ]

@@ -8,5 +8,11 @@
         <meta-data
             android:name="com.it.yk.contacts_component.app.GlobalConfiguration"
             android:value="ConfigModule" />
+
+        <activity android:name=".mvp.ui.activity.AddFriendsActivity" />
+        <activity android:name=".mvp.ui.activity.ContactsDetailsActivity" />
+        <activity android:name=".mvp.ui.activity.NewFriendsActivity" />
+        <activity android:name=".mvp.ui.activity.PhoneContactsActivity"></activity>
     </application>
+
 </manifest>

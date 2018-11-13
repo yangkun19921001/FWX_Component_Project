@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/public_x_50"
+    android:background="@drawable/public_selector_btn_bg">
+
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/public_x_30"
+        android:layout_height="@dimen/public_x_30"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:src="@drawable/ease_default_avatar" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:gravity="center_vertical"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tv_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/black_dft"
+            android:textSize="@dimen/public_font_14sp" />
+
+        <TextView
+            android:id="@+id/tv_content"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/public_x_1"
+            android:maxLines="1"
+            android:text="@string/app_name"
+            android:textColor="@color/gray_dft"
+            android:textSize="@dimen/public_font_12sp" />
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_look_up"
+        android:layout_width="@dimen/public_x_40"
+        android:layout_height="@dimen/public_x_30"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/public_x_5"
+        android:background="@drawable/btn_login_selector"
+        android:text="查看"
+        android:textColor="@color/public_white" />
+
+    <View
+        android:id="@+id/v_visibility"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_0.3"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:background="@color/gray5"></View>
+</RelativeLayout>

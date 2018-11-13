@@ -1,28 +1,31 @@
 package com.it.yk.contacts_component.mvp.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.WindowManager;
 
-import com.jess.arms.base.BaseFragment;
-import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.utils.ArmsUtils;
-
+import com.it.yk.contacts_component.R;
 import com.it.yk.contacts_component.di.component.DaggerContactsComponent;
 import com.it.yk.contacts_component.di.module.ContactsModule;
 import com.it.yk.contacts_component.mvp.contract.ContactsContract;
 import com.it.yk.contacts_component.mvp.presenter.ContactsPresenter;
-
-import com.it.yk.contacts_component.R;
+import com.jess.arms.base.BaseFragment;
+import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 public class ContactsFragment extends BaseFragment<ContactsPresenter> implements ContactsContract.View {
 
+
+    private View inflate;
 
     public static ContactsFragment newInstance() {
         ContactsFragment fragment = new ContactsFragment();
@@ -41,12 +44,22 @@ public class ContactsFragment extends BaseFragment<ContactsPresenter> implements
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_contacts, container, false);
+       getActivity(). getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        inflate = inflater.inflate(R.layout.fragment_contacts, container, false);
+        return inflate;
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        /**
+         * 初始化布局对象
+         */
+        mPresenter.initView(inflate);
 
+        /**
+         * 获取我的好友列表
+         */
+        mPresenter. getAllContacts();
     }
 
     /**
@@ -96,5 +109,11 @@ public class ContactsFragment extends BaseFragment<ContactsPresenter> implements
 
     public String getTitle() {
         return "通讯录";
+    }
+
+    @Nullable
+    @Override
+    public Activity getContext() {
+        return getActivity();
     }
 }

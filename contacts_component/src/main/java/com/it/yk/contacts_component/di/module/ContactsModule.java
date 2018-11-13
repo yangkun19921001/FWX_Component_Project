@@ -1,12 +1,19 @@
 package com.it.yk.contacts_component.di.module;
 
-import com.jess.arms.di.scope.ActivityScope;
-
-import dagger.Module;
-import dagger.Provides;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 
 import com.it.yk.contacts_component.mvp.contract.ContactsContract;
 import com.it.yk.contacts_component.mvp.model.ContactsModel;
+import com.it.yk.contacts_component.mvp.model.entity.ContactsEntity;
+import com.it.yk.contacts_component.mvp.ui.fragment.adapter.ContactsAdapter;
+import com.jess.arms.di.scope.ActivityScope;
+
+import java.util.ArrayList;
+import java.util.List;
+
+import dagger.Module;
+import dagger.Provides;
 
 
 @Module
@@ -32,5 +39,37 @@ public class ContactsModule {
     @Provides
     ContactsContract.Model provideContactsModel(ContactsModel model) {
         return model;
+    }
+
+    /**
+     * 通讯录适配
+     * @return
+     */
+    @ActivityScope
+    @Provides
+    RecyclerView.LayoutManager layoutManager() {
+        return new LinearLayoutManager(view.getContext());
+    }
+
+    /**
+     * 集合
+     *
+     * @return
+     */
+    @ActivityScope
+    @Provides
+    List<ContactsEntity> list() {
+        return new ArrayList<ContactsEntity>();
+    }
+
+    /**
+     * 通讯录适配
+     *
+     * @return
+     */
+    @ActivityScope
+    @Provides
+    ContactsAdapter contactsAdapter(List<ContactsEntity> list) {
+        return new ContactsAdapter(list);
     }
 }

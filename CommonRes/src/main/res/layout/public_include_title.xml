@@ -1,35 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v7.widget.Toolbar
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.v7.widget.Toolbar xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/public_toolbar"
     android:layout_width="match_parent"
     android:layout_height="@dimen/public_x_40"
     android:background="@color/public_colorPrimary"
-    app:contentInsetStart="0dp"
-    >
+    app:contentInsetStart="0dp">
 
     <RelativeLayout
         android:id="@+id/public_toolbar_back"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:gravity="left"
-        >
+        android:gravity="left">
 
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
             android:layout_marginLeft="@dimen/public_x_10"
             android:layout_marginRight="@dimen/public_x_10"
-            android:layout_centerVertical="true"
-            android:src="@drawable/public_ic_arrow_back_white_24dp"/>
+            android:src="@drawable/public_ic_arrow_back_white_24dp" />
 
     </RelativeLayout>
 
     <RelativeLayout
         android:id="@+id/public_toolbar_more"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/public_x_80"
         android:layout_height="match_parent"
         android:layout_gravity="right">
 
@@ -37,10 +34,19 @@
             android:id="@+id/public_iv_more"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerVertical="true"
-            android:layout_marginLeft="@dimen/public_x_10"
+            android:layout_centerInParent="true"
+            android:paddingLeft="@dimen/public_x_30"
             android:layout_marginRight="@dimen/public_x_10"
             android:src="@drawable/ic_add_black_24dp" />
+
+        <com.yk.component.res.view.TitleRightText
+            android:id="@+id/public_toolbar_title_right"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:textColor="@color/public_white"
+            android:textSize="@dimen/public_font_12sp"
+            android:visibility="gone" />
 
     </RelativeLayout>
 
@@ -48,11 +54,11 @@
         android:id="@+id/public_toolbar_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/public_font_16sp"
-        android:textColor="@color/public_white"
         android:layout_gravity="center"
+        android:textColor="@color/public_white"
+        android:textSize="@dimen/public_font_16sp"
         android:textStyle="bold"
-        tools:text="@string/public_app_name"/>
+        tools:text="@string/public_app_name" />
 
 
 </android.support.v7.widget.Toolbar>

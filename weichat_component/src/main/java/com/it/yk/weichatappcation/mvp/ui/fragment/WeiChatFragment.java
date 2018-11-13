@@ -1,28 +1,32 @@
 package com.it.yk.weichatappcation.mvp.ui.fragment;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jess.arms.base.BaseFragment;
-import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.utils.ArmsUtils;
-
+import com.blankj.utilcode.util.SPUtils;
+import com.it.yk.weichatappcation.R;
 import com.it.yk.weichatappcation.di.component.DaggerWeiChatComponent;
 import com.it.yk.weichatappcation.di.module.WeiChatModule;
 import com.it.yk.weichatappcation.mvp.contract.WeiChatContract;
 import com.it.yk.weichatappcation.mvp.presenter.WeiChatPresenter;
-
-import com.it.yk.weichatappcation.R;
+import com.jess.arms.base.BaseFragment;
+import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
+import com.yk.component.sdk.core.Constants;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 public class WeiChatFragment extends BaseFragment<WeiChatPresenter> implements WeiChatContract.View {
 
+
+    private View inflate;
 
     public static WeiChatFragment newInstance() {
         WeiChatFragment fragment = new WeiChatFragment();
@@ -41,12 +45,16 @@ public class WeiChatFragment extends BaseFragment<WeiChatPresenter> implements W
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_wei_chat, container, false);
+        inflate = inflater.inflate(R.layout.fragment_wei_chat, container, false);
+        return inflate;
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
-
+         //初始化视图对象
+        mPresenter.initView(inflate);
+        //获取历史会话消息
+        mPresenter.getMessageHistoryData(SPUtils.getInstance(Constants.ISP_Config.SP_NAME).getString(Constants.ISP_Config.USER_PHONE_NUMBER));
     }
 
     /**
@@ -96,5 +104,12 @@ public class WeiChatFragment extends BaseFragment<WeiChatPresenter> implements W
 
     public String getTitle() {
         return "微信(66)";
+    }
+
+
+    @Nullable
+    @Override
+    public Activity getContext() {
+        return getActivity();
     }
 }

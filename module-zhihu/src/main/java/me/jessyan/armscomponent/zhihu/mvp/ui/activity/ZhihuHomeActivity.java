@@ -70,6 +70,7 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     RecyclerView.LayoutManager mLayoutManager;
     @Inject
     RecyclerView.Adapter mAdapter;
+    private StatusViewHelper mStatusViewHelper;
 
 
     @Override
@@ -91,9 +92,10 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     public void initData(@Nullable Bundle savedInstanceState) {
         initRecyclerView();
         mRecyclerView.setAdapter(mAdapter);
-        StatusViewHelper.getStausView(this);
+        mStatusViewHelper = new StatusViewHelper(null, null);
+        mStatusViewHelper.getStausView(this, null);
         //为了测试
-        StatusViewHelper.showLoading();
+        mStatusViewHelper.showLoading();
         Observable.just(10 * 3000)
                 .delay(3 * 1000, TimeUnit.MILLISECONDS)
                 .subscribeOn(Schedulers.io())
@@ -106,7 +108,7 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
 
                     @Override
                     public void onNext(Integer integer) {
-                        StatusViewHelper.showContent();
+                        mStatusViewHelper.showContent();
                     }
 
                     @Override
@@ -171,7 +173,7 @@ public class ZhihuHomeActivity extends BaseActivity<ZhihuHomePresenter> implemen
     @Override
     protected void onDestroy() {
         DefaultAdapter.releaseAllHolder(mRecyclerView);//super.onDestroy()之后会unbind,所有view被置为null,所以必须在之前调用
-        StatusViewHelper.onDestory();
+        mStatusViewHelper.onDestory();
         super.onDestroy();
     }
 }

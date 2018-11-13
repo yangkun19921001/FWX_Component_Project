@@ -118,6 +118,7 @@ public class QMUIDialogHelper {
                 })
                 .addAction("确定", actionListener)
                 .create(mCurrentDialogStyle).show();
+
         return builder;
     }
 

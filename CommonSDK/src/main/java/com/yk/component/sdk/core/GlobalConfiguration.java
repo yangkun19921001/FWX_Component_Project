@@ -15,6 +15,7 @@
  */
 package com.yk.component.sdk.core;
 
+import android.annotation.SuppressLint;
 import android.app.Application;
 import android.content.Context;
 import android.os.Bundle;
@@ -34,11 +35,13 @@ import com.jess.arms.di.module.GlobalConfigModule;
 import com.jess.arms.http.log.RequestInterceptor;
 import com.jess.arms.integration.ConfigModule;
 import com.yk.component.sdk.BuildConfig;
+import com.yk.component.sdk.db.DBManager;
 import com.yk.component.sdk.http.Api;
 import com.yk.component.sdk.http.SSLSocketClient;
 import com.yk.component.sdk.imgaEngine.Strategy.CommonGlideImageLoaderStrategy;
 import com.yk.component.sdk.service.InitializeService;
 import com.yk.component.sdk.utils.CrashHandler;
+import com.yk.component.sdk.utils.LogHelper;
 
 import java.util.List;
 
@@ -102,8 +105,11 @@ public class GlobalConfiguration implements ConfigModule {
             @Override
             public void attachBaseContext(@NonNull Context base) {
                 initLog(base);
+
+
             }
 
+            @SuppressLint("MissingPermission")
             @Override
             public void onCreate(@NonNull Application application) {
                 if (BuildConfig.LOG_DEBUG) {//Timber日志打印
@@ -120,6 +126,7 @@ public class GlobalConfiguration implements ConfigModule {
                 Utils.init(application);
                 //初始化崩溃日志捕获
                 CrashHandler.getInstance().init(application);
+
                 //初始化一些配置信息
                 InitializeService.start(application);
                 //单 Activity + 多 Fragment 配置
@@ -136,7 +143,7 @@ public class GlobalConfiguration implements ConfigModule {
                             public void onException(Exception e) {
                                 // 以Bugtags为例子: 把捕获到的 Exception 传到 Bugtags 后台。
                                 // Bugtags.sendException(e);
-                                ALog.i(TAG, e.getMessage());
+                                LogHelper.i(TAG, e.getMessage());
                             }
                         })
                         .install();
@@ -145,6 +152,11 @@ public class GlobalConfiguration implements ConfigModule {
 //                MobSDK.init(application);
                 //初始化环信
                 initHXDemo(application);
+
+                //初始化数据库
+                DBManager.getInstance().initDB(application);
+
+
                 /**
                  * 以下是 AndroidAutoSize 可以自定义的参数, {@link AutoSizeConfig} 的每个方法的注释都写的很详细
                  * 使用前请一定记得跳进源码，查看方法的注释, 下面的注释只是简单描述!!!
@@ -229,7 +241,7 @@ public class GlobalConfiguration implements ConfigModule {
      * 初始化 Log
      */
     private void initLog(Context context) {
-        String logPath = Environment.getExternalStorageDirectory() + Constants.ILogPath.DefPath;
+        String logPath = Environment.getExternalStorageDirectory() + Constants.ILogPath.Log_D_Path;
         if (!FileUtils.isDir(logPath)) {
             FileUtils.createOrExistsDir(logPath);
 
@@ -238,8 +250,8 @@ public class GlobalConfiguration implements ConfigModule {
                 .setLogSwitch(true)// 设置log总开关，包括输出到控制台和文件，默认开
                 .setConsoleSwitch(true)// 设置是否输出到控制台开关，默认开                .
 // setLogSwitch(BuildConfig.DEBUG)// 设置log总开关，包括输出到控制台和文件，默认开
-                .setConsoleSwitch(com.jess.arms.BuildConfig.DEBUG)// 设置是否输出到控制台开关，默认开
-                .setGlobalTag(null)// 设置log全局标签，默认为空
+                .setConsoleSwitch(true)// 设置是否输出到控制台开关，默认开
+                .setGlobalTag(context.getPackageName())// 设置log全局标签，默认为空
                 // 当全局标签不为空时，我们输出的log全部为该tag，
                 // 为空时，如果传入的tag为空那就显示类名，否则显示tag
                 .setLogHeadSwitch(true)// 设置log头信息开关，默认为开

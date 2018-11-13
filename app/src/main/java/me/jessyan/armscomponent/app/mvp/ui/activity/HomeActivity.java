@@ -72,6 +72,15 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
         mPresenter.showDefFragment();
         //IM 服务状态监测
         mPresenter.checkIMServer();
+        //添加好友监听
+        mPresenter.addFriendManagerListener();
+        //添加消息监听
+        mPresenter.addMessageReceived();
+        //负责处理其他模块的任务跳转
+        mPresenter.dispatchTask();
+        //处理通知栏
+        mPresenter.showNotifi();
+
     }
 
 

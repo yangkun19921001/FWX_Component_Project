@@ -77,8 +77,11 @@ dependencies {
     testImplementation rootProject.ext.dependencies["canary-release"]
     //dex突破65535的限制
     api rootProject.ext.dependencies["multidex"]
-    implementation project(':contacts_component')
+    implementation project(':Contacts_component')
     implementation project(':find_component')
     implementation project(':me_component')
     implementation project(':weichat_component')
+    //聊天封装的UI组件
+//    implementation project(':fwx_chat_component')
+
 }

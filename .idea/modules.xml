@@ -5,17 +5,25 @@
       <module fileurl="file://$PROJECT_DIR$/CommonRes/CommonRes.iml" filepath="$PROJECT_DIR$/CommonRes/CommonRes.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonSDK/CommonSDK.iml" filepath="$PROJECT_DIR$/CommonSDK/CommonSDK.iml" />
       <module fileurl="file://$PROJECT_DIR$/CommonService/CommonService.iml" filepath="$PROJECT_DIR$/CommonService/CommonService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/Contacts_component/Contacts_component.iml" filepath="$PROJECT_DIR$/Contacts_component/Contacts_component.iml" />
       <module fileurl="file://$PROJECT_DIR$/FWX_Component_Project.iml" filepath="$PROJECT_DIR$/FWX_Component_Project.iml" />
       <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/ThirdLibrarys.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/ThirdLibrarys.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/WeiXinRecorded/WeiXinRecorded.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/WeiXinRecorded/WeiXinRecorded.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/contacts_component/contacts_component.iml" filepath="$PROJECT_DIR$/contacts_component/contacts_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/chat.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/chat.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/chat_base_component/chat_base_component.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/chat_base_component/chat_base_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/chatinput/chatinput.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/chatinput/chatinput.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/contacts_library/contacts_library.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/contacts_library/contacts_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/find_component/find_component.iml" filepath="$PROJECT_DIR$/find_component/find_component.iml" />
-      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/huanxi_component/huanxi_component.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/huanxi_component/huanxi_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/fwx_chat_component/fwx_chat_component.iml" filepath="$PROJECT_DIR$/fwx_chat_component/fwx_chat_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/huanxi_library/huanxi_library.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/huanxi_library/huanxi_library.iml" />
       <module fileurl="file://$PROJECT_DIR$/login_component/login_component.iml" filepath="$PROJECT_DIR$/login_component/login_component.iml" />
       <module fileurl="file://$PROJECT_DIR$/me_component/me_component.iml" filepath="$PROJECT_DIR$/me_component/me_component.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/messagelist/messagelist.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/messagelist/messagelist.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-gank/module-gank.iml" filepath="$PROJECT_DIR$/module-gank/module-gank.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-gold/module-gold.iml" filepath="$PROJECT_DIR$/module-gold/module-gold.iml" />
       <module fileurl="file://$PROJECT_DIR$/module-zhihu/module-zhihu.iml" filepath="$PROJECT_DIR$/module-zhihu/module-zhihu.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/waveview/waveview.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/waveview/waveview.iml" />
       <module fileurl="file://$PROJECT_DIR$/weichat_component/weichat_component.iml" filepath="$PROJECT_DIR$/weichat_component/weichat_component.iml" />
     </modules>
   </component>

@@ -1,5 +1,6 @@
 package com.it.yk.find_component.mvp.ui.fragment;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -7,22 +8,22 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.jess.arms.base.BaseFragment;
-import com.jess.arms.di.component.AppComponent;
-import com.jess.arms.utils.ArmsUtils;
-
+import com.it.yk.find_component.R;
 import com.it.yk.find_component.di.component.DaggerFindComponent;
 import com.it.yk.find_component.di.module.FindModule;
 import com.it.yk.find_component.mvp.contract.FindContract;
 import com.it.yk.find_component.mvp.presenter.FindPresenter;
-
-import com.it.yk.find_component.R;
+import com.jess.arms.base.BaseFragment;
+import com.jess.arms.di.component.AppComponent;
+import com.jess.arms.utils.ArmsUtils;
 
 import static com.jess.arms.utils.Preconditions.checkNotNull;
 
 
 public class FindFragment extends BaseFragment<FindPresenter> implements FindContract.View {
 
+
+    private View inflate;
 
     public static FindFragment newInstance() {
         FindFragment fragment = new FindFragment();
@@ -41,11 +42,14 @@ public class FindFragment extends BaseFragment<FindPresenter> implements FindCon
 
     @Override
     public View initView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_find, container, false);
+        inflate = inflater.inflate(R.layout.fragment_find, container, false);
+        return inflate;
     }
 
     @Override
     public void initData(Bundle savedInstanceState) {
+        //初始化视图对象
+        mPresenter.initView(inflate,getActivity());
 
     }
 
@@ -96,5 +100,10 @@ public class FindFragment extends BaseFragment<FindPresenter> implements FindCon
 
     public String getTitle() {
         return "发现";
+    }
+
+    @Override
+    public Context getContxt() {
+        return getActivity();
     }
 }

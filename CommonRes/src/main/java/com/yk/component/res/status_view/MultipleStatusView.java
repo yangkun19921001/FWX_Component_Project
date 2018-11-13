@@ -246,16 +246,21 @@ public class MultipleStatusView extends RelativeLayout {
         showViewById(mNoNetworkView.getId());
     }
 
+    public View inflate_View(int layoutId) {
+        return mInflater.inflate(layoutId, null);
+    }
+
     /**
      * 显示内容视图
      */
-    public final void showContent() {
+    public final View  showContent() {
         mViewStatus = STATUS_CONTENT;
         if (null == mContentView && mContentViewResId != NULL_RESOURCE_ID) {
             mContentView = mInflater.inflate(mContentViewResId, null);
             addView(mContentView, 0, DEFAULT_LAYOUT_PARAMS);
         }
         showContentView();
+        return mContentView;
     }
 
     private void showContentView() {

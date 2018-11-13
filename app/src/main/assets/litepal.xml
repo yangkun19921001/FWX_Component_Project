@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<litepal>
+    <dbname value="ga_liao"></dbname>
+
+    <version value="7"></version>
+
+    <list>
+        <!--好友管理-->
+        <mapping class="com.it.yk.contacts_component.mvp.model.entity.NewFriendsEntity"></mapping>
+
+        <!--历史会话消息记录-->
+        <mapping class="com.it.yk.weichatappcation.mvp.model.entity.WeiChatMessageHistoryEntity"></mapping>
+
+        <!--聊天消息记录-->
+        <mapping class="com.it.yk.fwx_chat_component.mvp.model.entity.ChatMessageEntity"></mapping>
+    </list>
+</litepal>

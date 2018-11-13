@@ -248,3 +248,16 @@
  #######################环信######################################
  -keep class com.hyphenate.** {*;}
  -dontwarn  com.hyphenate.**
+
+ #########################数据库######################################
+ -keep class org.litepal.** {
+     *;
+ }
+
+ -keep class * extends org.litepal.crud.DataSupport {
+     *;
+ }
+
+ -keep class * extends org.litepal.crud.LitePalSupport {
+     *;
+ }

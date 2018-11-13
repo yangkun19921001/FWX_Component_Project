@@ -10,17 +10,17 @@
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
     <uses-permission android:name="android.permission.READ_PHONE_STATE" />
-
     <uses-permission android:name="android.permission.VIBRATE" />
     <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <uses-permission android:name="android.permission.CAMERA" />
-    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.GET_TASKS" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
     <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
     <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-    <!--android:theme="@style/public_AppTheme"-->
+
+    <!-- android:theme="@style/public_AppTheme" -->
     <application
         android:name="com.jess.arms.base.BaseApplication"
         android:allowBackup="true"
@@ -34,7 +34,7 @@
         <meta-data
             android:name="EASEMOB_APPKEY"
             android:value="1135181019228641#itykgaliao" />
-        <!-- 声明SDK所需的service SDK核心功能-->
+        <!-- 声明SDK所需的service SDK核心功能 -->
         <service
             android:name="com.hyphenate.chat.EMChatService"
             android:exported="true" />
@@ -55,12 +55,11 @@
             </intent-filter>
         </receiver>
 
-
         <activity
             android:name=".mvp.ui.activity.SplashActivity"
             android:configChanges="orientation|screenSize"
-            android:theme="@style/SplashTheme"
-            android:screenOrientation="portrait">
+            android:screenOrientation="portrait"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -116,7 +115,20 @@
                 android:resource="@xml/provider" />
         </provider>
 
-        <activity android:name=".mvp.ui.activity.HomeActivity"></activity>
+        <activity
+            android:name=".mvp.ui.activity.HomeActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait" />
+
+
+        <activity
+            android:name="com.iit.yk.chat_base_component.imuisample.messages.VideoActivity"
+            android:configChanges="orientation|screenSize"
+            android:theme="@android:style/Theme.Holo.NoActionBar.Fullscreen"></activity>
+        <activity
+            android:name="com.iit.yk.chat_base_component.imuisample.messages.BrowserImageActivity"
+            android:configChanges="orientation|screenSize"
+            android:windowSoftInputMode="adjustResize" />
     </application>
 
 </manifest>

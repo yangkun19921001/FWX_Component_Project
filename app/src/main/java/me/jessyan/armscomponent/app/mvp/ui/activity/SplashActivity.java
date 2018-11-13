@@ -1,23 +1,8 @@
-/*
- * Copyright 2018 JessYan
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- *
- *      http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 package me.jessyan.armscomponent.app.mvp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.FrameLayout;
@@ -27,114 +12,52 @@ import com.alibaba.android.arouter.facade.annotation.Route;
 import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.ScreenUtils;
 import com.blankj.utilcode.util.Utils;
-import com.hyphenate.easeui.helper.HXHelper;
 import com.jess.arms.base.BaseActivity;
 import com.jess.arms.di.component.AppComponent;
 import com.yk.component.sdk.core.Constants;
 import com.yk.component.sdk.core.RouterHub;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
-import io.reactivex.Observable;
-import io.reactivex.ObservableEmitter;
-import io.reactivex.ObservableOnSubscribe;
-import io.reactivex.Observer;
-import io.reactivex.android.schedulers.AndroidSchedulers;
-import io.reactivex.disposables.Disposable;
-import io.reactivex.schedulers.Schedulers;
 import me.jessyan.armscomponent.app.R;
+import me.jessyan.armscomponent.app.di.component.DaggerSplashComponent;
+import me.jessyan.armscomponent.app.di.module.SplashModule;
+import me.jessyan.armscomponent.app.mvp.contract.SplashContract;
+import me.jessyan.armscomponent.app.mvp.presenter.SplashPresenter;
 
-import static com.yk.component.sdk.core.RouterHub.APP_MAINACTIVITY;
-
-/**
- * ================================================
- * Created by JessYan on 18/04/2018 17:03
- * <a href="mailto:jess.yan.effort@gmail.com">Contact me</a>
- * <a href="https://github.com/JessYanCoding">Follow me</a>
- * ================================================
- */
 @Route(path = RouterHub.APP_SPLASHACTIVITY)
-public class SplashActivity extends BaseActivity implements View.OnClickListener {
+public class SplashActivity extends BaseActivity<SplashPresenter> implements SplashContract.View , View.OnClickListener {
+
     @BindView(R.id.splash_root)
     FrameLayout splashRoot;
     @BindView(R.id.rl_bottom)
     RelativeLayout rlBottom;
     private AlphaAnimation mAnimation;
-
     @Override
-    public void setupActivityComponent(@NonNull AppComponent appComponent) {
-
+    public void setupActivityComponent(AppComponent appComponent) {
+        DaggerSplashComponent //如找不到该类,请编译一下项目
+                .builder()
+                .appComponent(appComponent)
+                .splashModule(new SplashModule(this))
+                .build()
+                .inject(this);
     }
 
     @Override
-    public int initView(@Nullable Bundle savedInstanceState) {
+    public int initView(Bundle savedInstanceState) {
         ScreenUtils.setFullScreen(this);
         return R.layout.activity_splash; //如果你不需要框架帮你设置 setContentView(id) 需要自行设置,请返回 0
     }
-
     @Override
     public void initData(Bundle savedInstanceState) {
         findId();
-
         mAnimation = new AlphaAnimation(0.3f, 1.0f);
         mAnimation.setDuration(1500);
         splashRoot.startAnimation(mAnimation);
 
-        initToLoginOrMain();
+        mPresenter.initToLoginOrMain(rlBottom);
 
     }
 
-    /**
-     * 检查是否登录
-     */
-    private void initToLoginOrMain() {
-
-        Observable.create(new ObservableOnSubscribe<Boolean>() {
-            @Override
-            public void subscribe(ObservableEmitter<Boolean> emitter) throws Exception {
-                boolean register = HXHelper.getInstance().getLoginEngine().isRegister();
-                if (register) {
-                    HXHelper.getInstance().getLoginEngine().loginSucceedInit();
-                }
-                try {
-                    Thread.sleep(1500);
-                    emitter.onNext(register);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-
-            }
-        }).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Boolean>() {
-                    @Override
-                    public void onSubscribe(Disposable d) {
-
-                    }
-
-                    @Override
-                    public void onNext(Boolean isLogin) {
-                        if (isLogin) {
-                            ARouter.getInstance().build(APP_MAINACTIVITY).navigation();
-                            finish();
-                        }else{
-                            rlBottom.setVisibility(View.VISIBLE);
-                        }
-
-                    }
-
-                    @Override
-                    public void onError(Throwable e) {
-
-                    }
-
-                    @Override
-                    public void onComplete() {
-
-                    }
-                });
-
-    }
 
     /**
      * 注册或者登录
@@ -160,9 +83,32 @@ public class SplashActivity extends BaseActivity implements View.OnClickListener
     }
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        // TODO: add setContentView(...) invocation
-        ButterKnife.bind(this);
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+    @Override
+    public void showLoading() {
+
+    }
+
+    @Override
+    public void hideLoading() {
+
+    }
+
+    @Override
+    public void showMessage(@NonNull String message) {
+
+    }
+
+    @Override
+    public void launchActivity(@NonNull Intent intent) {
+
+    }
+
+    @Override
+    public void killMyself() {
+
     }
 }

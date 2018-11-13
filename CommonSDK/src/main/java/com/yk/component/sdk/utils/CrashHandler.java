@@ -50,7 +50,7 @@ public class CrashHandler implements UncaughtExceptionHandler {
     private DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd-HH-mm-ss");
 
     // 日志地址
-    private String logPath =Log_Crash_Path;
+    private String logPath = Log_Crash_Path;
     private String dir;
 
     /**
@@ -89,16 +89,15 @@ public class CrashHandler implements UncaughtExceptionHandler {
             mDefaultHandler.uncaughtException(thread, ex);
         } else {
             try {
-                Thread.sleep(2000);
+                Thread.sleep(1000);
                 /**杀死整个进程**/
                 ArmsUtils.obtainAppComponentFromContext(mContext).appManager().killAll();
+                android.os.Process.killProcess(android.os.Process.myPid());
+                System.exit(0);
             } catch (Exception e) {
                 e.printStackTrace();
             }
             /**杀死整个进程**/
-            //重启APP
-            //打印日志地址
-            LogUtils.debugInfo(TAG, ex.getMessage());
         }
     }
 
@@ -119,14 +118,16 @@ public class CrashHandler implements UncaughtExceptionHandler {
         }
 
         new Thread() {
+
+            private Toast mToast;
+
             @Override
             public void run() {
                 Log.i(TAG, "run开始");
                 Looper.prepare();
-                Toast.makeText(mContext, "应用出现错误,请重新登陆!" +"\r\n"+ ex.getMessage(), Toast.LENGTH_LONG)
-                        .show();
+                mToast = Toast.makeText(ArmsUtils.obtainAppComponentFromContext(mContext).appManager().getCurrentActivity(), "应用出现错误,请重新登陆!" + "\r\n" + ex.getMessage(), Toast.LENGTH_LONG);
+                mToast.show();
                 Looper.loop();
-                Log.i(TAG, "run结束");
             }
 
         }.start();

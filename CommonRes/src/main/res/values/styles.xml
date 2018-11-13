@@ -119,4 +119,16 @@
         <item name="android:windowEnterAnimation">@anim/public_right_in</item>
         <item name="android:windowExitAnimation">@anim/public_right_out</item>
     </style>
+
+    <style name="public_Dialog_FullScreen" parent="Theme.AppCompat.Dialog">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">false</item>
+    </style>
+
+    <style name="public_dialogWindowAnim" parent="android:Animation" mce_bogus="1">
+        <item name="android:windowEnterAnimation">@anim/public_dialog_enter</item>
+        <item name="android:windowExitAnimation">@anim/public_dialog_exit</item>
+    </style>
+
 </resources>

@@ -18,11 +18,11 @@ import android.support.v4.content.FileProvider;
 import android.text.TextUtils;
 import android.util.Log;
 
-import com.blankj.ALog;
-import com.blankj.utilcode.util.*;
+import com.blankj.utilcode.util.ToastUtils;
 import com.jess.arms.utils.ArmsUtils;
 import com.lzy.okgo.OkGo;
 import com.lzy.okgo.callback.StringCallback;
+import com.yk.component.sdk.utils.LogHelper;
 
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -110,7 +110,7 @@ public class AppDownloadManager {
             weakReference.get().getContentResolver().unregisterContentObserver(mDownLoadChangeObserver);
             weakReference.get().unregisterReceiver(mDownloadReceiver);
         }catch (Exception e){
-            ALog.i(TAG,e.getMessage());
+            LogHelper.e(TAG,e.getMessage());
         }
     }
 
@@ -204,7 +204,7 @@ public class AppDownloadManager {
     private void installApk(Context context, Intent intent) {
         long completeDownLoadId = intent.getLongExtra(DownloadManager.EXTRA_DOWNLOAD_ID, -1);
 
-        ALog.i(TAG, "收到广播");
+        LogHelper.i(TAG, "收到广播");
         Uri uri;
         Intent intentInstall = new Intent();
         intentInstall.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
@@ -223,7 +223,7 @@ public class AppDownloadManager {
                 intentInstall.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION | Intent.FLAG_GRANT_WRITE_URI_PERMISSION);
             }
 
-            ALog.i("zhouwei", "下载完成了");
+            LogHelper.i("zhouwei", "下载完成了");
 
             intentInstall.setDataAndType(uri, "application/vnd.android.package-archive");
             context.startActivity(intentInstall);

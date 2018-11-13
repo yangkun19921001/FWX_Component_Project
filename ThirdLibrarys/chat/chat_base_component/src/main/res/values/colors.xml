@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#000</color>
+    <color name="colorPrimaryDark">#000</color>
+    <color name="colorAccent">#000</color>
+
+    <color name="chat_base_chat_title_bg">#000</color>
+    <color name="chat_base_google_red">#FFC93437</color>
+    <color name="chat_base_google_blue">#FF375BF1</color>
+    <color name="chat_base_google_yellow">#FFF7D23E</color>
+    <color name="chat_base_google_green">#FF34A350</color>
+</resources>

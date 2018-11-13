@@ -253,6 +253,7 @@
     <dimen name="public_text_size29">29sp</dimen>
     <dimen name="public_text_size30">30sp</dimen>
 
+    <dimen name="public_x_0.3">0.8dp</dimen>
     <dimen name="public_x_1">1dp</dimen>
     <dimen name="public_x_2">2dp</dimen>
     <dimen name="public_x_3">3dp</dimen>

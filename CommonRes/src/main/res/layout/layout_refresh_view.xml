@@ -5,7 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/public_app_bg"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
 
     <com.scwang.smartrefresh.layout.SmartRefreshLayout
         android:id="@+id/refreshLayout"

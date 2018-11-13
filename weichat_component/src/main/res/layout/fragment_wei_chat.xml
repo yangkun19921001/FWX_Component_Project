@@ -1,8 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <include layout="@layout/layout_status_view"></include>
-</LinearLayout>
+    android:orientation="vertical"
+    tools:ignore="ResourceName">
+
+    <com.yk.component.res.status_view.MultipleStatusView
+        android:id="@+id/multiple_status_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:Public_emptyView="@layout/custom_empty_view"
+        app:Public_errorView="@layout/custom_error_view"
+        app:Public_loadingView="@layout/custom_loading_view"
+        app:Public_noNetworkView="@layout/custom_no_network_view">
+
+        <include layout="@layout/layout_refresh_view"></include>
+    </com.yk.component.res.status_view.MultipleStatusView>
+</FrameLayout>

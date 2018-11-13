@@ -83,7 +83,12 @@ dependencies {
     //Optional compile for GCM (Google Cloud Messaging).
     //    api rootProject.ext.dependencies ["play-services-gcm"]
     //    api rootProject.ext.dependencies ["hyphenate-sdk"]
-    api project(':ThirdLibrarys:huanxi_component')
+    //环信组件库
+    api project(':ThirdLibrarys:huanxi_library')
+    //微信通讯录组件
+    api project(':ThirdLibrarys:contacts_library')
     //popup
     api rootProject.ext.dependencies["EasyPopup"]
+    //高斯模糊
+    api rootProject.ext.dependencies["blur"]
 }

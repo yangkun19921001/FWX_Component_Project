@@ -22,6 +22,7 @@
         android:showDividers="middle">
 
         <TextView
+            android:id="@+id/send_group_chat"
             android:layout_width="match_parent"
             android:layout_height="@dimen/public_x_30"
             android:gravity="center"
@@ -30,6 +31,7 @@
             android:textSize="@dimen/public_font_12sp" />
 
         <TextView
+            android:id="@+id/tv_add_friend"
             android:layout_width="match_parent"
             android:layout_height="@dimen/public_x_30"
             android:gravity="center"
@@ -38,6 +40,7 @@
             android:textSize="@dimen/public_font_12sp" />
 
         <TextView
+            android:id="@+id/tv_sao_yi_sao"
             android:layout_width="match_parent"
             android:layout_height="@dimen/public_x_30"
             android:gravity="center"
@@ -46,6 +49,7 @@
             android:textSize="@dimen/public_font_12sp" />
 
         <TextView
+            android:id="@+id/tv_shou_fu_kuan"
             android:layout_width="match_parent"
             android:layout_height="@dimen/public_x_30"
             android:gravity="center"
