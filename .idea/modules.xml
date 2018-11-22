@@ -20,9 +20,6 @@
       <module fileurl="file://$PROJECT_DIR$/login_component/login_component.iml" filepath="$PROJECT_DIR$/login_component/login_component.iml" />
       <module fileurl="file://$PROJECT_DIR$/me_component/me_component.iml" filepath="$PROJECT_DIR$/me_component/me_component.iml" />
       <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/messagelist/messagelist.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/messagelist/messagelist.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-gank/module-gank.iml" filepath="$PROJECT_DIR$/module-gank/module-gank.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-gold/module-gold.iml" filepath="$PROJECT_DIR$/module-gold/module-gold.iml" />
-      <module fileurl="file://$PROJECT_DIR$/module-zhihu/module-zhihu.iml" filepath="$PROJECT_DIR$/module-zhihu/module-zhihu.iml" />
       <module fileurl="file://$PROJECT_DIR$/ThirdLibrarys/chat/waveview/waveview.iml" filepath="$PROJECT_DIR$/ThirdLibrarys/chat/waveview/waveview.iml" />
       <module fileurl="file://$PROJECT_DIR$/weichat_component/weichat_component.iml" filepath="$PROJECT_DIR$/weichat_component/weichat_component.iml" />
     </modules>

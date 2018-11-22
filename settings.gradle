@@ -7,8 +7,6 @@ include ':app',                                                    //app 宿主
         ':CommonSDK',                                            //公共组件库
         ':CommonService',                                        //外面提供服务的
         ':CommonRes',                                            //公共资源
-        ':module-zhihu',                                         //
-        ':module-gank',
         ':ThirdLibrarys:huanxi_library',                        //环信组件
         ':ThirdLibrarys:contacts_library',                      //通讯录组件
         ':ThirdLibrarys:chat:chatinput',                      //聊天输入封装组件
@@ -16,5 +14,4 @@ include ':app',                                                    //app 宿主
         ':ThirdLibrarys:chat:waveview',                      //聊天MP3录音封装组件
         ':ThirdLibrarys:chat:WeiXinRecorded',                //聊天视频录音封装组件
         ':ThirdLibrarys:chat:chat_base_component',
-        ':fwx_chat_component',
-        ':module-gold'
+        ':fwx_chat_component'

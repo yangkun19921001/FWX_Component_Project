@@ -54,9 +54,6 @@ android {
 dependencies {
     implementation fileTree(include: ['*.jar'], dir: 'libs')
     if (!isBuildModule.toBoolean()) {
-        implementation project(":module-zhihu")
-        implementation project(":module-gank")
-        implementation project(":module-gold")
         implementation project(":login_component")
     } else {
         implementation project(":CommonRes")
