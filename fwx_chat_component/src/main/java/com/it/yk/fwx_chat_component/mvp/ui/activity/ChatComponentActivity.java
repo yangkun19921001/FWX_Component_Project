@@ -130,4 +130,8 @@ public class ChatComponentActivity extends BaseActivity<ChatComponentPresenter> 
         super.onResume();
         EaseUI.getInstance().getNotifier().reset();
     }
+
+    public String GroupId() {
+        return mPresenter.getGroupId();
+    }
 }

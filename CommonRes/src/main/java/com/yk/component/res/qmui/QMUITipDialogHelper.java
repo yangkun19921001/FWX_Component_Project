@@ -13,14 +13,20 @@ import java.lang.ref.WeakReference;
 
 public class QMUITipDialogHelper {
 
-    private  QMUITipDialog tipDialog;
-    private  WeakReference<Activity> weakReference;
+    private QMUITipDialog tipDialog;
+    private WeakReference<Activity> weakReference;
 
     private static QMUITipDialogHelper instance;
-    public static QMUITipDialogHelper getInstance(){
+
+    public static QMUITipDialogHelper getInstance() {
         if (instance == null)
             instance = new QMUITipDialogHelper();
         return instance;
+    }
+
+    public void onDetory() {
+        if (instance != null)
+            instance = null;
     }
 
     /**
@@ -31,7 +37,7 @@ public class QMUITipDialogHelper {
      * 3："请勿重复操作"
      * 4：
      */
-    public    void showLoading(Activity activity, String meg, int type, long delayTime, final ILoadListener iLoadListener) {
+    public void showLoading(Activity activity, String meg, int type, long delayTime, final ILoadListener iLoadListener) {
         weakReference = new WeakReference<Activity>(activity);
         if (tipDialog != null) {
             tipDialog.dismiss();

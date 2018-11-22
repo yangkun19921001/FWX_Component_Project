@@ -50,8 +50,6 @@ import io.reactivex.schedulers.Schedulers;
 import me.jessyan.rxerrorhandler.core.RxErrorHandler;
 import me.jessyan.rxerrorhandler.handler.ErrorHandleSubscriber;
 
-import static com.hyphenate.easeui.EaseConstant.CHATTYPE_SINGLE;
-
 
 @ActivityScope
 public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.Model, ChatComponentContract.View> {
@@ -62,13 +60,18 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
     private ChatComponentManager mChatComponentManager;
 
     /**
-     * 当前聊天室类型
+     * 当前聊天室ui类型
      */
     private int mCurrentChatType = 0;
     private String mOtherId;
 
     @Inject
     List<MyMessage> myMessageList;
+
+    /**
+     * 发送到服务端的类型 1：单聊、2 群聊
+     */
+    public static  int CHATTYPE_SINGLE_GROUP = 1;
 
     @Inject
     public ChatComponentPresenter(ChatComponentContract.Model model, ChatComponentContract.View rootView
@@ -106,9 +109,11 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
             switch (mAppManager.getTopActivity().getIntent().getExtras().getInt(Constants.IChat.ChatType)) {
                 case Constants.IChat.OneChat:
                     mCurrentChatType = Constants.IChat.OneChat;
+                    CHATTYPE_SINGLE_GROUP = 1;
                     break;
                 case Constants.IChat.GroupChat:
                     mCurrentChatType = Constants.IChat.GroupChat;
+                    CHATTYPE_SINGLE_GROUP = 2;
                     break;
             }
         } catch (Exception e) {
@@ -174,7 +179,7 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
      * @param message
      */
     private void sendVoice(MyMessage message) {
-        HXHelper.getInstance().getMessageEngine().sendVoiceMessage(CHATTYPE_SINGLE, message.getMediaFilePath(), Integer.parseInt(FileUtils.getDirLength(message.getMediaFilePath()) + ""), message.getFromUser().getId(), new EMCallBack() {
+        HXHelper.getInstance().getMessageEngine().sendVoiceMessage(CHATTYPE_SINGLE_GROUP, message.getMediaFilePath(), Integer.parseInt(FileUtils.getDirLength(message.getMediaFilePath()) + ""), message.getFromUser().getId(), new EMCallBack() {
             @Override
             public void onSuccess() {
                 LogHelper.d(TAG, "---sendVoice--onSuccess----" + message.getMediaFilePath());
@@ -204,7 +209,7 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
      * @param message
      */
     private void sendFile(MyMessage message) {
-        HXHelper.getInstance().getMessageEngine().sendFileMessage(CHATTYPE_SINGLE, message.getMediaFilePath(), message.getFromUser().getId(), new EMCallBack() {
+        HXHelper.getInstance().getMessageEngine().sendFileMessage(CHATTYPE_SINGLE_GROUP, message.getMediaFilePath(), message.getFromUser().getId(), new EMCallBack() {
             @Override
             public void onSuccess() {
                 LogHelper.d(TAG, "---sendFile--onSuccess----" + message.getMediaFilePath());
@@ -232,7 +237,7 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
      * @param message
      */
     private void sendLocation(MyMessage message) {
-        HXHelper.getInstance().getMessageEngine().sendLocationMessage(CHATTYPE_SINGLE, 0, 0, "中关村", message.getFromUser().getId(), new EMCallBack() {
+        HXHelper.getInstance().getMessageEngine().sendLocationMessage(CHATTYPE_SINGLE_GROUP, 0, 0, "中关村", message.getFromUser().getId(), new EMCallBack() {
             @Override
             public void onSuccess() {
                 LogHelper.d(TAG, "---sendLocation--onSuccess----" + message.getMediaFilePath());
@@ -259,7 +264,7 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
     }
 
     private void sendVideo(MyMessage message) {
-        HXHelper.getInstance().getMessageEngine().sendVideoMessage(CHATTYPE_SINGLE, message.getMediaFilePath(), message.getMediaFilePath(), Integer.parseInt(FileUtils.getDirLength(message.getMediaFilePath()) + ""), message.getFromUser().getId(), new EMCallBack() {
+        HXHelper.getInstance().getMessageEngine().sendVideoMessage(CHATTYPE_SINGLE_GROUP, message.getMediaFilePath(), message.getMediaFilePath(), Integer.parseInt(FileUtils.getDirLength(message.getMediaFilePath()) + ""), message.getFromUser().getId(), new EMCallBack() {
             @Override
             public void onSuccess() {
                 LogHelper.d(TAG, "---sendVideo--onSuccess----" + message.getMediaFilePath());
@@ -282,7 +287,7 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
     }
 
     private void sendImg(MyMessage message) {
-        HXHelper.getInstance().getMessageEngine().sendImgMessage(CHATTYPE_SINGLE, message.getMediaFilePath(), message.getFromUser().getId(), new EMCallBack() {
+        HXHelper.getInstance().getMessageEngine().sendImgMessage(CHATTYPE_SINGLE_GROUP, message.getMediaFilePath(), message.getFromUser().getId(), new EMCallBack() {
             @Override
             public void onSuccess() {
                 LogHelper.d(TAG, "---sendImg--onSuccess----" + message.getMediaFilePath());
@@ -305,7 +310,7 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
     }
 
     private void sendTxtMessage(MyMessage message) {
-        HXHelper.getInstance().getMessageEngine().sendTxtMessage(CHATTYPE_SINGLE, message.getText(), message.getFromUser().getId(), new EMCallBack() {
+        HXHelper.getInstance().getMessageEngine().sendTxtMessage(CHATTYPE_SINGLE_GROUP, message.getText(), message.getFromUser().getId(), new EMCallBack() {
             @Override
             public void onSuccess() {
                 LogHelper.d(TAG, "---sendTxtMessage--onSuccess----" + message.getMediaFilePath());
@@ -456,9 +461,8 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
      * 将当前聊天人员发送出去
      */
     public void sendCurrentChatPerson() {
-        if (mChatComponentManager.getAdapterData().size() >= 0) {
+        if (mChatComponentManager.getAdapterData().size() > 0) {
             int sendType = mChatComponentManager.getAdapterData().get(0).getType();
-
             switch (sendType) {
                 case 13:
                     sendMessageToDispactchManager("自定义数据");
@@ -505,8 +509,12 @@ public class ChatComponentPresenter extends BasePresenter<ChatComponentContract.
     @Subscriber(tag = Constants.IChat.SessionMessageToAdapter)
     public void addMessage(Message message) {
         MyMessage myMessage = (MyMessage) message.obj;
-        if (null != message){
+        if (null != message && myMessage.getFromUser().getId().equals(mOtherId)){
             mChatComponentManager.loadMessage(myMessage);
         }
+    }
+
+    public String getGroupId() {
+        return mOtherId;
     }
 }

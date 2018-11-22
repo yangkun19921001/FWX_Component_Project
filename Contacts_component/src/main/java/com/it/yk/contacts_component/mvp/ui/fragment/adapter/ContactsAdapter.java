@@ -46,8 +46,13 @@ public class ContactsAdapter extends BaseMultiItemQuickAdapter<ContactsEntity, B
                                 Utils.navigation(RouterHub.FRIENDS_NewFriendsActivity);
                                 break;
                             case Constants.IContacts.GROUP_CHAT:
+                                ARouter.getInstance().build(RouterHub.FRIENDS_GroupListActivity).navigation();
                                 break;
                             case Constants.IContacts.TITLE:
+                                break;
+                            case Constants.IContacts.Public_Meeting:
+                                ARouter.getInstance().build(RouterHub.Chat_AddGroupActivity)
+                                        .withInt(Constants.IChat.OPEN_SELECT_USER,Constants.IChat.CREATE_Meeting).navigation();
                                 break;
                             case Constants.IContacts.Public_Number:
                                 break;

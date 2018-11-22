@@ -1,3 +1,5 @@
 <resources>
-    <string name="app_name">fwx_chat_component</string>
+    <string name="chat_component_selecter_friends">选择好友</string>
+    <string name="chat_component_group_list">我的群组</string>
+    <string name="chat_component_group_detail">群组详情</string>
 </resources>

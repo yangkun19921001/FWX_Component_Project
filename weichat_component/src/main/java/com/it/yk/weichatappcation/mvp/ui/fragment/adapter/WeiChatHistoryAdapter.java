@@ -37,9 +37,33 @@ public class WeiChatHistoryAdapter extends BaseMultiItemQuickAdapter<WeiChatMess
                 showMessageBaseInfo(helper, item);
                 break;
             case Constants.IMessageType.GroupChat:
-                showMessageBaseInfo(helper, item);
+                showMessageGroupBaseInfo(helper, item);
                 break;
         }
+
+        helper.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ARouter.getInstance().build(RouterHub.Chat_ChatComponentActivity)
+                        .withInt(Constants.IChat.ChatType, item.getItemType()) //聊天类型
+                        .withString(Constants.IChat.otherId, item.getOtherId()) //跟谁聊天
+                        .navigation();
+            }
+        });
+    }
+
+    private void showMessageGroupBaseInfo(BaseViewHolder helper, WeiChatMessageHistoryEntity item) {
+        helper.setText(R.id.tv_name, item.getOtherId())
+                .setText(R.id.tv_content, item.getLastMessageContent())
+                .setText(R.id.tv_time, TimeUtils.getFriendlyTimeSpanByNow(item.getMessageTime()));
+
+        if (item.getUnReadMessageCount() == 0) {
+            helper.setVisible(R.id.recently_vis, true)
+                    .setText(R.id.recently_count, item.getUnReadMessageCount()+2 +"");
+        } else {
+            helper.setVisible(R.id.recently_vis, false);
+        }
+
     }
 
     private void showMessageBaseInfo(BaseViewHolder helper, WeiChatMessageHistoryEntity item) {
@@ -54,20 +78,6 @@ public class WeiChatHistoryAdapter extends BaseMultiItemQuickAdapter<WeiChatMess
             helper.setVisible(R.id.recently_vis, false);
         }
 
-        helper.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                ARouter.getInstance().build(RouterHub.Chat_ChatComponentActivity)
-                        .withInt(Constants.IChat.ChatType, item.getItemType()) //聊天类型
-                        .withString(Constants.IChat.otherId, item.getOtherId()) //跟谁聊天
-                        .navigation();
-                switch (item.getItemType()) {
-                    case Constants.IMessageType.OneChat:
-                        break;
-                    case Constants.IMessageType.GroupChat:
-                        break;
-                }
-            }
-        });
+
     }
 }

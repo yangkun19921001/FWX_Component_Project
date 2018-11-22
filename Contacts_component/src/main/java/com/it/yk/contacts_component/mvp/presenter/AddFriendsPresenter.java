@@ -5,6 +5,7 @@ import android.app.FragmentManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.SPUtils;
 import com.it.yk.contacts_component.R;
 import com.it.yk.contacts_component.mvp.contract.AddFriendsContract;
@@ -19,6 +20,7 @@ import com.jess.arms.utils.ArmsUtils;
 import com.scwang.smartrefresh.layout.SmartRefreshLayout;
 import com.yk.component.res.status_view.StatusViewHelper;
 import com.yk.component.sdk.core.Constants;
+import com.yk.component.sdk.core.RouterHub;
 
 import java.util.List;
 
@@ -92,16 +94,14 @@ public class AddFriendsPresenter extends BasePresenter<AddFriendsContract.Model,
         //雷达添加朋友
         mLists.add(new AddFriendsEntity(Constants.IContacts.AddFriendLayout_Button, "雷达添加朋友", R.drawable.contacts_icon_radar));
         //面对面建群
-        mLists.add(new AddFriendsEntity(Constants.IContacts.AddFriendLayout_Button, "面对面建群", R.drawable.contacts_icon_item_group));
+        mLists.add(new AddFriendsEntity(Constants.IContacts.AddFriendLayout_Button, "创建群聊", R.drawable.contacts_icon_item_group));
         //扫一扫
         mLists.add(new AddFriendsEntity(Constants.IContacts.AddFriendLayout_Button, "扫一扫", R.drawable.contacts_icon_scan));
         return mLists;
     }
 
-
     public void setAdapterItemClick(FragmentManager fragmentManager, String tag) {
         mAddFriendsAdapter.setItemClickListener(new AddFriendsAdapter.IItemClickListener() {
-
             @Override
             public void showDialog() {
                 mSearchDialog = new SearchDialog();
@@ -110,7 +110,8 @@ public class AddFriendsPresenter extends BasePresenter<AddFriendsContract.Model,
 
             @Override
             public void itemClick(AddFriendsEntity item) {
-
+                ARouter.getInstance().build(RouterHub.Chat_AddGroupActivity)
+                        .withInt(Constants.IChat.OPEN_SELECT_USER,Constants.IChat.CREATE_GROUP).navigation();
             }
         });
     }

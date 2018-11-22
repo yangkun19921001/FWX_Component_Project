@@ -44,7 +44,6 @@ public class ContactsDetailsAdapter extends BaseMultiItemQuickAdapter<ContactsDe
             case Constants.IContacts.AddFriendLayout_Group:
                 helper.setText(R.id.tv_title, groupTag[helper.getAdapterPosition() - 1])
                         .setText(R.id.tv_name, item.getName());
-
                 switch (item.getName()) {
                     case "冰岛":
                     case "来至手机搜索":

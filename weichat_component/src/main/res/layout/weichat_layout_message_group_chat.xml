@@ -11,7 +11,7 @@
         android:layout_height="@dimen/public_x_35"
         android:layout_centerVertical="true"
         android:layout_marginLeft="@dimen/public_x_8"
-        android:src="@drawable/ease_default_avatar" />
+        android:src="@mipmap/em_group_icon" />
 
     <LinearLayout
         android:orientation="vertical"

@@ -83,6 +83,7 @@ public interface Constants {
         String SOCIAL_INFORMATION = "社交资料";
         String NEW_FRIEND_DATA = "NEW_FRIEND_DATA";
         String NewFriendsAdapter = "NewFriendsAdapter";
+        String Public_Meeting  = "会议";
     }
 
     public interface IMessageType {
@@ -131,6 +132,8 @@ public interface Constants {
     public interface IChat {
         int OneChat = 0x001;
         int GroupChat = 0x002;
+        int CREATE_GROUP = 0x003;
+        int CREATE_Meeting = 0x004;
         /**
          * 聊天类型
          */
@@ -174,6 +177,13 @@ public interface Constants {
 
 
         String SessionMessageToAdapter = "SessionMessageToAdapter";
+        String SELECT_USER = "SELECT_USER";
+        String SELECT_USER_LIST = "SELECT_USER_LIST";
+        String OPEN_SELECT_USER = "OPEN_SELECT_USER";
+
+        //
+        String GroupId  = "GroupId";
+
     }
 
     public interface IPostMessage {
@@ -185,6 +195,8 @@ public interface Constants {
         int ON_MESSAGE_CHANGED = 0x006;
         int SEND_CURRENT_CHAT_PERSON = 0x007;
         int SESSION_TO_CHAT_ADAPTER = 0x008;
+        int SELECT_USER = 0x009;
+        int SELECT_USER_LIST = 0x010;
     }
 
     public interface IWeiChat {

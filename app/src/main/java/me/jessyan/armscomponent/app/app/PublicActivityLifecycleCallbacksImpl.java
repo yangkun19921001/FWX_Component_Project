@@ -5,12 +5,20 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.it.yk.contacts_component.mvp.ui.activity.AddFriendsActivity;
 import com.it.yk.contacts_component.mvp.ui.activity.ContactsDetailsActivity;
 import com.it.yk.contacts_component.mvp.ui.activity.NewFriendsActivity;
 import com.it.yk.contacts_component.mvp.ui.activity.PhoneContactsActivity;
+import com.it.yk.fwx_chat_component.mvp.ui.activity.AllContactsActivity;
+import com.it.yk.fwx_chat_component.mvp.ui.activity.ChatComponentActivity;
+import com.it.yk.fwx_chat_component.mvp.ui.activity.GroupDetailActivity;
+import com.it.yk.fwx_chat_component.mvp.ui.activity.GroupListActivity;
 import com.jess.arms.utils.ArmsUtils;
+import com.yk.component.res.qmui.QMUITipDialogHelper;
+import com.yk.component.sdk.core.Constants;
 import com.yk.component.sdk.core.RouterHub;
+import com.yk.component.sdk.manager.DispatchManager;
 import com.yk.component.sdk.utils.Utils;
 
 import me.jessyan.armscomponent.app.R;
@@ -70,6 +78,46 @@ class PublicActivityLifecycleCallbacksImpl implements android.app.Application.Ac
                     }
                 });
             }
+        } else if (activity instanceof AllContactsActivity) {
+            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right") != null) {
+                ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right").setVisibility(View.VISIBLE);
+                TextView public_toolbar_title_right = ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right");
+                public_toolbar_title_right.setText(R.string.ok_select);
+                public_toolbar_title_right.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        DispatchManager.getInstance().sendMessage(Constants.IPostMessage.SELECT_USER,Constants.IPostMessage.SELECT_USER);
+                    }
+                });
+            }
+        } else if (activity instanceof GroupListActivity) {
+            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right") != null) {
+                ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right").setVisibility(View.VISIBLE);
+                TextView public_toolbar_title_right = ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right");
+                public_toolbar_title_right.setText(R.string.create_new_group);
+                public_toolbar_title_right.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ARouter.getInstance().build(RouterHub.Chat_AddGroupActivity)
+                                .withInt(Constants.IChat.OPEN_SELECT_USER,Constants.IChat.CREATE_GROUP).navigation();
+                    }
+                });
+            }
+        }else if (activity instanceof ChatComponentActivity) {
+            ChatComponentActivity chatComponentActivity = (ChatComponentActivity) activity;
+            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right") != null) {
+                ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right").setVisibility(View.VISIBLE);
+                TextView public_toolbar_title_right = ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right");
+                public_toolbar_title_right.setText(R.string.Group_Detail);
+                public_toolbar_title_right.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        ARouter.getInstance().build(RouterHub.FRIENDS_GroupDetailActivity)
+                                .withString(Constants.IChat.GroupId,chatComponentActivity.GroupId()).navigation();
+                    }
+                });
+            }
         } else {
             if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right") != null) {
                 ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title_right").setVisibility(View.GONE);
@@ -103,6 +151,24 @@ class PublicActivityLifecycleCallbacksImpl implements android.app.Application.Ac
                 TextView public_toolbar_title = (TextView) ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title");
                 public_toolbar_title.setText(R.string.PHONE_CONTACTS_FRIEND);
             }
+        } else if (activity instanceof AllContactsActivity) {
+            AllContactsActivity allContactsActivity = (AllContactsActivity) activity;
+            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title") != null) {
+                TextView public_toolbar_title = (TextView) ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title");
+                public_toolbar_title.setText(allContactsActivity.getCurrentTitle());
+            }
+        } else if (activity instanceof GroupListActivity) {
+            GroupListActivity allContactsActivity = (GroupListActivity) activity;
+            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title") != null) {
+                TextView public_toolbar_title = (TextView) ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title");
+                public_toolbar_title.setText(allContactsActivity.getCurrentTitle());
+            }
+        }else if (activity instanceof GroupDetailActivity) {
+            GroupDetailActivity allContactsActivity = (GroupDetailActivity) activity;
+            if (ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title") != null) {
+                TextView public_toolbar_title = (TextView) ArmsUtils.findViewByName(activity.getApplicationContext(), activity, "public_toolbar_title");
+                public_toolbar_title.setText(allContactsActivity.getCurrentTitle()+"");
+            }
         }
     }
 
@@ -128,6 +194,6 @@ class PublicActivityLifecycleCallbacksImpl implements android.app.Application.Ac
 
     @Override
     public void onActivityDestroyed(Activity activity) {
-
+        QMUITipDialogHelper.getInstance().onDetory();
     }
 }

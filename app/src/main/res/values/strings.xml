@@ -7,4 +7,7 @@
     <string name="NewFriends">新的朋友</string>
     <string name="add_contacts">添加朋友</string>
     <string name="PHONE_CONTACTS_FRIEND">通讯录朋友</string>
+    <string name="ok_select">确定选择</string>
+    <string name="create_new_group">创建群聊</string>
+    <string name="Group_Detail">群组信息</string>
 </resources>

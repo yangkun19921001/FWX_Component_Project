@@ -9,7 +9,12 @@
             android:name="com.it.yk.fwx_chat_component.app.GlobalConfiguration"
             android:value="ConfigModule" />
 
-        <activity android:name=".mvp.ui.activity.ChatComponentActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ChatComponentActivity" />
+        <activity android:name=".mvp.ui.activity.AllContactsActivity" />
+        <activity android:name=".mvp.ui.activity.SelectFriendsActivity" />
+        <activity android:name=".mvp.ui.activity.GroupListActivity" />
+        <activity android:name=".mvp.ui.activity.GroupDetailActivity" />
+        <activity android:name=".mvp.ui.activity.GroupMettingActivity"></activity>
     </application>
 
 </manifest>

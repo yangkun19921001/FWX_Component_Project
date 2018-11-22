@@ -106,4 +106,8 @@ public interface RouterHub {
 
     String FRIENDS_PhoneContactsActivity = FRIENDS + "/PhoneContactsActivity";
     String Chat_ChatComponentActivity =CHAT_COMPONENT + "/ChatComponentActivity" ;
+    String Chat_AddGroupActivity = CHAT_COMPONENT+"/Chat_AddGroupActivity";
+    String FRIENDS_GroupListActivity = CHAT_COMPONENT+ "/GroupListActivity";
+    String FRIENDS_GroupDetailActivity = CHAT_COMPONENT+ "/GroupDetailActivity";
+    String Chat_LaunchGroupMetting = CHAT_COMPONENT + "/LaunchGroupMetting";
 }

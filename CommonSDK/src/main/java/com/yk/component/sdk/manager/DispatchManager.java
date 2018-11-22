@@ -81,8 +81,15 @@ public class DispatchManager<T> {
                         break;
 
                     case Constants.IPostMessage.SESSION_TO_CHAT_ADAPTER:
-                        LogHelper.i(TAG,"收到后台发来的消息 转发到适配器中");
-                        dispatchMessage(Constants.IChat.SessionMessageToAdapter,message);
+                        LogHelper.i(TAG, "收到后台发来的消息 转发到适配器中");
+                        dispatchMessage(Constants.IChat.SessionMessageToAdapter, message);
+                        break;
+
+                    case Constants.IPostMessage.SELECT_USER:
+                        dispatchMessage(Constants.IChat.SELECT_USER, message);
+                        break;
+                    case Constants.IPostMessage.SELECT_USER_LIST:
+                        dispatchMessage(Constants.IChat.SELECT_USER_LIST, message);
                         break;
 
                 }

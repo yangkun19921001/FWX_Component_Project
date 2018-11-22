@@ -80,6 +80,8 @@ public class HomeActivity extends BaseActivity<HomePresenter> implements HomeCon
         mPresenter.dispatchTask();
         //处理通知栏
         mPresenter.showNotifi();
+        //给群组设置监听
+        mPresenter.addGroupStateListener();
 
     }
 

@@ -125,7 +125,7 @@ public class WeiChatModel extends BaseModel implements WeiChatContract.Model {
                 chatMessageEntity.setMessageStatus(IMessage.MessageStatus.RECEIVE_FAILED);
                 break;
         }
-        chatMessageEntity.setUserInfo(new DefaultUser(chatMeg.getUserId(), chatMeg.getUserId(), chatMeg.getUserId()));
+        chatMessageEntity.setUserInfo(new DefaultUser(chatMeg.getOtherId(), chatMeg.getUserId(), chatMeg.getUserId()));
         chatMessageEntity.setDuration(0);
         chatMessageEntity.setMediaFilePath(chatMeg.getFilePath());
         chatMessageEntity.setTimeString(chatMeg.getMessageTime());

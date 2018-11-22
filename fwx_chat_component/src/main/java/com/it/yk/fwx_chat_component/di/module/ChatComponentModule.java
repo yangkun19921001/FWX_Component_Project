@@ -1,8 +1,13 @@
 package com.it.yk.fwx_chat_component.di.module;
 
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+
 import com.iit.yk.chat_base_component.imuisample.models.MyMessage;
 import com.it.yk.fwx_chat_component.mvp.contract.ChatComponentContract;
 import com.it.yk.fwx_chat_component.mvp.model.ChatComponentModel;
+import com.it.yk.fwx_chat_component.mvp.model.entity.AllContactsEntity;
+import com.it.yk.fwx_chat_component.mvp.ui.activity.adapter.AllContacts;
 import com.jess.arms.di.scope.ActivityScope;
 
 import java.util.ArrayList;
@@ -32,15 +37,19 @@ public class ChatComponentModule {
     }
 
 
-
     @ActivityScope
     @Provides
     ChatComponentContract.Model provideChatComponentModel(ChatComponentModel model) {
         return model;
     }
+
+
+
     @ActivityScope
     @Provides
-    List<MyMessage> myMessageList(){
+    List<MyMessage> myMessageList() {
         return new ArrayList<>();
-    };
+    }
+
+    ;
 }

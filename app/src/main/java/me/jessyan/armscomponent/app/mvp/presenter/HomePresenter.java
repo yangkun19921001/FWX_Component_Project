@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.FragmentUtils;
 import com.blankj.utilcode.util.SPUtils;
 import com.blankj.utilcode.util.SizeUtils;
@@ -17,7 +18,9 @@ import com.blankj.utilcode.util.TimeUtils;
 import com.blankj.utilcode.util.ToastUtils;
 import com.hyphenate.EMConnectionListener;
 import com.hyphenate.EMContactListener;
+import com.hyphenate.EMGroupChangeListener;
 import com.hyphenate.chat.EMMessage;
+import com.hyphenate.chat.EMMucSharedFile;
 import com.hyphenate.easeui.EaseUI;
 import com.hyphenate.easeui.domain.EaseUser;
 import com.hyphenate.easeui.helper.HXHelper;
@@ -297,12 +300,14 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
     public void onClick(View v) {
         mCirclePop.dismiss();
         if (v.getId() == R.id.send_group_chat) {
+            ARouter.getInstance().build(RouterHub.Chat_AddGroupActivity)
+                    .withInt(Constants.IChat.OPEN_SELECT_USER, Constants.IChat.CREATE_GROUP).navigation();
+        } else if (v.getId() == R.id.tv_add_friend) {
             Utils.navigation(RouterHub.FRIENDS_AddFriendsActivity);
-        } else if (v.getId() == R.id.send_group_chat) {
-        } else if (v.getId() == R.id.send_group_chat) {
-        } else if (v.getId() == R.id.send_group_chat) {
-        } else {
+        } else if (v.getId() == R.id.tv_sao_yi_sao) {
 
+        } else if (v.getId() == R.id.tv_shou_fu_kuan) {
+        } else {
         }
     }
 
@@ -311,7 +316,6 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
      */
     public void addFriendManagerListener() {
         HXHelper.getInstance().getFriendEngine().setContactListener(new EMContactListener() {
-
             @Override
             public void onContactInvited(String username, String reason) {
                 LogHelper.d(TAG, "收到好友邀请---" + username + "--收到好友邀请理由--" + reason);
@@ -395,7 +399,7 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
             public void onMessageReceived(List<EMMessage> messages) {
                 //收到消息
                 LogHelper.d(TAG, "onMessageReceived -- 收到消息--" + (messages.size() > 0 ? messages.get(messages.size() - 1).toString() : "没有数据"));
-                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_RECEIVED,messages);
+                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_RECEIVED, messages);
                 EaseUI.getInstance().getNotifier().vibrateAndPlayTone(messages.get(0));
                 EaseUI.getInstance().getNotifier().notify(messages);
             }
@@ -404,35 +408,35 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
             public void onCmdMessageReceived(List<EMMessage> messages) {
                 //收到透传消息
                 LogHelper.d(TAG, "onCmdMessageReceived -- 收到透传消息--" + (messages.size() > 0 ? messages.get(messages.size() - 1).toString() : "没有数据"));
-                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_CMDMESSAGE_RECEIVED,messages);
+                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_CMDMESSAGE_RECEIVED, messages);
             }
 
             @Override
             public void onMessageRead(List<EMMessage> messages) {
                 //收到已读回执
                 LogHelper.d(TAG, "onMessageRead -- 收到已读回执--" + (messages.size() > 0 ? messages.get(messages.size() - 1).toString() : "没有数据"));
-                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_READ,messages);
+                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_READ, messages);
             }
 
             @Override
             public void onMessageDelivered(List<EMMessage> messages) {
                 //收到已送达回执
                 LogHelper.d(TAG, "onMessageDelivered -- 收到已送达回执--" + (messages.size() > 0 ? messages.get(messages.size() - 1).toString() : "没有数据"));
-                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_DELIVERED,messages);
+                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_DELIVERED, messages);
             }
 
             @Override
             public void onMessageRecalled(List<EMMessage> messages) {
                 //消息被撤回
                 LogHelper.d(TAG, "onMessageRecalled -- 消息被撤回--" + (messages.size() > 0 ? messages.get(messages.size() - 1).toString() : "没有数据"));
-                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_RECALLED,messages);
+                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_RECALLED, messages);
             }
 
             @Override
             public void onMessageChanged(EMMessage message, Object change) {
                 //消息状态变动
                 LogHelper.d(TAG, "onMessageChanged -- 消息状态变动--" + message.toString());
-                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_CHANGED,message);
+                DispatchManager.getInstance().sendMessage(Constants.IPostMessage.ON_MESSAGE_CHANGED, message);
             }
         });
     }
@@ -463,17 +467,17 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
             public String getDisplayedText(EMMessage message) {
                 // be used on notification bar, different text according the message type.
                 String ticker = EaseCommonUtils.getMessageDigest(message, mApplication);
-                if(message.getType() == EMMessage.Type.TXT){
+                if (message.getType() == EMMessage.Type.TXT) {
                     ticker = ticker.replaceAll("\\[.{2,3}\\]", "[表情]");
                 }
                 EaseUser user = getUserInfo(message.getFrom());
-                if(user != null){
-                    if(EaseAtMessageHelper.get().isAtMeMsg(message)){
+                if (user != null) {
+                    if (EaseAtMessageHelper.get().isAtMeMsg(message)) {
                         return String.format(mApplication.getString(com.hyphenate.easeui.R.string.at_your_in_group), user.getNick());
                     }
                     return user.getNick() + ": " + ticker;
-                }else{
-                    if(EaseAtMessageHelper.get().isAtMeMsg(message)){
+                } else {
+                    if (EaseAtMessageHelper.get().isAtMeMsg(message)) {
                         return String.format(mApplication.getString(com.hyphenate.easeui.R.string.at_your_in_group), message.getFrom());
                     }
                     return message.getFrom() + ": " + ticker;
@@ -497,20 +501,139 @@ public class HomePresenter extends BasePresenter<HomeContract.Model, HomeContrac
 //                }else if(isVoiceCalling){
 //                    intent = new Intent(mApplication, VoiceCallActivity.class);
 //                }else{
-                    EMMessage.ChatType chatType = message.getChatType();
-                    if (chatType == EMMessage.ChatType.Chat) { // single chat message
-                        intent.putExtra(Constants.IChat.otherId, message.getFrom());
-                        intent.putExtra(Constants.IChat.ChatType, Constants.IChat.OneChat);
-                    } else { // group chat message
-                        // message.getTo() is the group id
-                        if(chatType == EMMessage.ChatType.GroupChat){
-                            intent.putExtra(Constants.IChat.otherId,  message.getTo());
-                            intent.putExtra(Constants.IChat.ChatType, Constants.IChat.GroupChat);
-                        }
-
+                EMMessage.ChatType chatType = message.getChatType();
+                if (chatType == EMMessage.ChatType.Chat) { // single chat message
+                    intent.putExtra(Constants.IChat.otherId, message.getFrom());
+                    intent.putExtra(Constants.IChat.ChatType, Constants.IChat.OneChat);
+                } else { // group chat message
+                    // message.getTo() is the group id
+                    if (chatType == EMMessage.ChatType.GroupChat) {
+                        intent.putExtra(Constants.IChat.otherId, message.getTo());
+                        intent.putExtra(Constants.IChat.ChatType, Constants.IChat.GroupChat);
                     }
+
+                }
 //                }
                 return intent;
+            }
+        });
+    }
+
+    /**
+     * 群组操作设置监听
+     */
+    public void addGroupStateListener() {
+
+        HXHelper.getInstance().getGroupHelper().addGroupStateListenee(new EMGroupChangeListener() {
+            @Override
+            public void onInvitationReceived(String groupId, String groupName, String inviter, String reason) {
+                //接收到群组加入邀请
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--接收到群组加入邀请--groupId--" + groupId + "--groupName--" + groupName + "--inviter--" + inviter + "--reason--" + reason);
+            }
+
+            @Override
+            public void onRequestToJoinReceived(String groupId, String groupName, String applyer, String reason) {
+                //用户申请加入群
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--用户申请加入群--groupId--" + groupId + "--groupName--" + groupName + "--applyer--" + applyer + "--reason--" + reason);
+            }
+
+            @Override
+            public void onRequestToJoinAccepted(String groupId, String groupName, String accepter) {
+                //加群申请被同意
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--加群申请被同意--groupId--" + groupId + "--groupName--" + groupName + "--accepter--" + accepter);
+            }
+
+            @Override
+            public void onRequestToJoinDeclined(String groupId, String groupName, String decliner, String reason) {
+                //加群申请被拒绝
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--加群申请被拒绝--groupId--" + groupId + "--groupName--" + groupName + "--reason--" + reason);
+            }
+
+            @Override
+            public void onInvitationAccepted(String groupId, String inviter, String reason) {
+                //群组邀请被同意
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--加群申请被拒绝--groupId--" + groupId + "--inviter--" + inviter + "--reason--" + reason);
+            }
+
+            @Override
+            public void onInvitationDeclined(String groupId, String invitee, String reason) {
+                //群组邀请被拒绝
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--加群申请被拒绝--groupId--" + groupId + "--invitee--" + invitee + "--reason--" + reason);
+            }
+
+            @Override
+            public void onUserRemoved(String s, String s1) {
+            }
+
+            @Override
+            public void onGroupDestroyed(String s, String s1) {
+
+            }
+
+            @Override
+            public void onAutoAcceptInvitationFromGroup(String groupId, String inviter, String inviteMessage) {
+                //接收邀请时自动加入到群组的通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--接收邀请时自动加入到群组的通知--groupId--" + groupId + "--inviter--" + inviter + "--inviteMessage--" + inviteMessage);
+            }
+
+            @Override
+            public void onMuteListAdded(String groupId, final List<String> mutes, final long muteExpire) {
+                //成员禁言的通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--成员禁言的通知--groupId--" + groupId + "--mutes--" + mutes + "--muteExpire--" + muteExpire);
+            }
+
+            @Override
+            public void onMuteListRemoved(String groupId, final List<String> mutes) {
+                //成员从禁言列表里移除通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--成员从禁言列表里移除通知--groupId--" + groupId + "--groupId--" + groupId + "--muteExpire--" + mutes);
+            }
+
+            @Override
+            public void onAdminAdded(String groupId, String administrator) {
+                //增加管理员的通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--增加管理员的通知--groupId--" + groupId + "--groupId--" + groupId + "--administrator--" + administrator);
+            }
+
+            @Override
+            public void onAdminRemoved(String groupId, String administrator) {
+                //管理员移除的通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--管理员移除的通知--groupId--" + groupId + "--groupId--" + groupId + "--administrator--" + administrator);
+            }
+
+            @Override
+            public void onOwnerChanged(String groupId, String newOwner, String oldOwner) {
+                //群所有者变动通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--群所有者变动通知--groupId--" + groupId + "--groupId--" + groupId + "--newOwner--" + newOwner+"--oldOwner--"+oldOwner);
+            }
+
+            @Override
+            public void onMemberJoined(final String groupId, final String member) {
+                //群组加入新成员通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--群组加入新成员通知--groupId--" + groupId + "--groupId--" + groupId + "--member--" + member);
+            }
+
+            @Override
+            public void onMemberExited(final String groupId, final String member) {
+                //群成员退出通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--群成员退出通知--groupId--" + groupId + "--groupId--" + groupId + "--member--" + member);
+            }
+
+            @Override
+            public void onAnnouncementChanged(String groupId, String announcement) {
+                //群公告变动通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--群公告变动通知--groupId--" + groupId + "--groupId--" + groupId + "--announcement--" + announcement);
+            }
+
+            @Override
+            public void onSharedFileAdded(String groupId, EMMucSharedFile sharedFile) {
+                //增加共享文件的通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--增加共享文件的通知--groupId--" + groupId + "--groupId--" + groupId + "--sharedFile--" + sharedFile.getFileName());
+            }
+
+            @Override
+            public void onSharedFileDeleted(String groupId, String fileId) {
+                //群共享文件删除通知
+                LogHelper.i(TAG, Thread.currentThread().getStackTrace()[2].getMethodName() + "--群共享文件删除通知--groupId--" + groupId + "--groupId--" + groupId + "--fileId--" + fileId);
             }
         });
     }

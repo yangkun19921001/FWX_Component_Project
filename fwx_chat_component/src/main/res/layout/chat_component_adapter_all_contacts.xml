@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/public_x_50"
+    android:background="@drawable/public_selector_btn_bg"
+    android:orientation="vertical">
+
+    <ImageView
+        android:id="@+id/iv_icon"
+        android:layout_width="@dimen/public_x_30"
+        android:layout_height="@dimen/public_x_30"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:src="@drawable/ease_default_avatar" />
+
+    <TextView
+        android:id="@+id/tv_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:layout_toRightOf="@+id/iv_icon"
+        android:maxLines="1"
+        android:textColor="@color/black_dft"
+        android:textSize="@dimen/public_font_14sp" />
+
+
+    <ImageView
+        android:id="@+id/iv_selecter_icon"
+        android:layout_width="@dimen/public_x_30"
+        android:layout_height="@dimen/public_x_30"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="@dimen/public_x_2"
+       android:layout_alignParentRight="true"
+        android:src="@drawable/ic_check_circle_gray_dft_24dp" />
+
+    <View
+        android:layout_marginLeft="@dimen/public_x_8"
+        android:layout_alignParentBottom="true"
+        android:background="@color/gray5"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/public_x_1"></View>
+</RelativeLayout>

@@ -140,6 +140,7 @@ public class ContactsPresenter extends BasePresenter<ContactsContract.Model, Con
         mList.add((ContactsEntity) new ContactsEntity(Constants.IContacts.GROUP_CHAT, R.drawable.contacts_group_cheat,0).setTop(true).setBaseIndexTag(INDEX_SEARCH_TOP));
         mList.add((ContactsEntity) new ContactsEntity(Constants.IContacts.TITLE, R.drawable.contacts_tag,0).setTop(true).setBaseIndexTag(INDEX_SEARCH_TOP));
         mList.add((ContactsEntity) new ContactsEntity(Constants.IContacts.Public_Number, R.drawable.contacts_offical,0).setTop(true).setBaseIndexTag(INDEX_SEARCH_TOP));
+        mList.add((ContactsEntity) new ContactsEntity(Constants.IContacts.Public_Meeting, R.drawable.em_groups_icon,0).setTop(true).setBaseIndexTag(INDEX_SEARCH_TOP));
         //更新数据
         upAdapter();
         mStatusViewHelper.showContent();

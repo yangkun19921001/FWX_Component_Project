@@ -40,4 +40,5 @@ public class LogHelper {
         ALog.getConfig().setDir(logPath);
     }
 
+
 }

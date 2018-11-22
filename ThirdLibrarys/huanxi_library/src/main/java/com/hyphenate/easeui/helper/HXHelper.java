@@ -16,6 +16,8 @@ public class HXHelper {
     private LoginHelper loginHelper;
     private FriendHelper friendHelper;
     private MessageHelper messageHelper;
+    private GroupHelper mGroupHelper;
+    private MettingHelper mMettingHelper;
 
     public static HXHelper getInstance() {
         if (instance == null)
@@ -68,5 +70,25 @@ public class HXHelper {
         if (messageHelper == null)
             messageHelper = new MessageHelper();
         return messageHelper;
+    }
+
+    /**
+     * 获取群组帮助类
+     */
+    public GroupHelper getGroupHelper(){
+        if (mGroupHelper == null)
+            mGroupHelper = new GroupHelper();
+
+        return mGroupHelper;
+    }
+
+    /**
+     * 获取群组帮助类
+     */
+    public MettingHelper getMettingHelper() {
+        if (mMettingHelper == null)
+            mMettingHelper = new MettingHelper();
+
+        return mMettingHelper;
     }
 }

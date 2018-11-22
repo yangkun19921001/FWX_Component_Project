@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <color name="bg_tools_panel">#2F2F2F</color>
+    <color name="holo_black">#ff111111</color>
 </resources>

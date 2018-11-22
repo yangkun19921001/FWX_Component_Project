@@ -176,8 +176,6 @@ public class WeiChatPresenter extends BasePresenter<WeiChatContract.Model, WeiCh
                 emMessageList) {
             handlerRevicesMessage(emMessage);
 
-            //通知栏显示的消息
-
         }
 
     }
@@ -189,10 +187,26 @@ public class WeiChatPresenter extends BasePresenter<WeiChatContract.Model, WeiCh
      */
     private void handlerRevicesMessage(EMMessage message) {
         Bundle bundle = new Bundle();
+        String toId = "";
         try {
+            switch (message.getChatType()) {
+                case Chat:
+                    //最后一条聊天的类型（单聊/群聊）
+                    bundle.putInt(Constants.IChat.MESSAGE_SIG_GROUP, Constants.IChat.OneChat);
+                    mCurrentChatType = Constants.IChat.OneChat;
+                    mOtherID = message.getFrom();
+                    break;
+                case GroupChat:
+                    bundle.putInt(Constants.IChat.MESSAGE_SIG_GROUP, Constants.IChat.GroupChat);
+                    mCurrentChatType = Constants.IChat.GroupChat;
+                    mOtherID = message.getTo();
+                    break;
+            }
+            toId = mOtherID;
             int messageType = EaseCommonUtils.getMessageType(message);
             switch (messageType) {
                 case Constants.IHXMessageType.MESSAGE_TYPE_RECV_TXT:
+
                     EMTextMessageBody txt = (EMTextMessageBody) message.getBody();
                     LogHelper.i(TAG, "收到 TXT 消息--" + txt.getMessage());
                     //最后一条聊天的聊天消息类型
@@ -246,24 +260,13 @@ public class WeiChatPresenter extends BasePresenter<WeiChatContract.Model, WeiCh
                     break;
             }
 //            String ticker = EaseCommonUtils.getMessageDigest(message, mApplication);
-            switch (message.getChatType()) {
-                case Chat:
-                    //最后一条聊天的类型（单聊/群聊）
-                    bundle.putInt(Constants.IChat.MESSAGE_SIG_GROUP, Constants.IChat.OneChat);
-                    mCurrentChatType = Constants.IChat.OneChat;
-                    mOtherID = message.getFrom();
-                    break;
-                case GroupChat:
-                    bundle.putInt(Constants.IChat.MESSAGE_SIG_GROUP, Constants.IChat.GroupChat);
-                    mCurrentChatType = Constants.IChat.GroupChat;
-                    break;
-            }
+
 
             //最后一条聊天的消息 ID
             bundle.putString(Constants.IChat.MESSAGE_ID, message.getMsgId());
 
             //与谁聊天
-            bundle.putString(Constants.IChat.otherId, message.getFrom());
+            bundle.putString(Constants.IChat.otherId, toId);
             bundle.putString(Constants.IChat.MESSAGE_TIME, TimeUtils.getNowString());
             //将收到的消息发送出去用于保存聊天记录和会话记录
             DispatchManager.getInstance().sendMessage(Constants.IPostMessage.SEND_CURRENT_CHAT_PERSON, bundle);
